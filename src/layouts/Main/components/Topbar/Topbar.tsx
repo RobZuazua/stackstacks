@@ -307,7 +307,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
           </ListItem>
-          <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
+          {/* <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               variant="outlined"
               component="a"
@@ -315,7 +315,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
             >
               Documentation
             </Button>
-          </ListItem>
+          </ListItem> */}
           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               variant="contained"
@@ -325,7 +325,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
               href="https://material-ui.com/store/items/the-front-landing-page/"
               className={classes.listItemButton}
             >
-              Buy Now
+              Connect Wallet
             </Button>
           </ListItem>
         </List>

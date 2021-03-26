@@ -6,62 +6,63 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import WithLayout from 'WithLayout';
-import { Main as MainLayout, Minimal as MinimalLayout, DocsLayout } from './layouts';
+import { Main as MainLayout, Minimal as MinimalLayout} from './layouts';
 
 import {
-  Home as HomeView,
-  IndexView,
-  Agency as AgencyView,
-  CareerListing as CareerListingView,
-  CareerListingMinimal as CareerListingMinimalView,
-  CareerOpening as CareerOpeningView,
-  ContactPage as ContactPageView,
-  Coworking as CoworkingView,
-  Elearning as ElearningView,
-  Enterprise as EnterpriseView,
-  Service as ServiceView,
-  WebBasic as WebBasicView,
-  DesktopApp as DesktopAppView,
-  Expo as ExpoView,
-  Startup as StartupView,
-  DesignCompany as DesignCompanyView,
-  MobileApp as MobileAppView,
-  JobListing as JobListingView,
-  Rental as RentalView,
-  CloudHosting as CloudHostingView,
-  Logistics as LogisticsView,
-  Ecommerce as EcommerceView,
-  Pricing as PricingView,
-  About as AboutView,
-  HelpCenter as HelpCenterView,
-  HelpCenterArticle as HelpCenterArticleView,
-  PortfolioPage as PortfolioPageView,
-  PortfolioMasonry as PortfolioMasonryView,
-  PortfolioGrid as PortfolioGridView,
-  CompanyTerms as CompanyTermsView,
-  ContactPageSidebarMap as ContactPageSidebarMapView,
-  ContactPageCover as ContactPageCoverView,
-  AboutSideCover as AboutSideCoverView,
-  BlogSearch as BlogSearchView,
-  BlogNewsroom as BlogNewsroomView,
-  BlogArticle as BlogArticleView,
-  BlogReachView as BlogReachViewView,
-  PasswordResetCover as PasswordResetCoverView,
-  PasswordResetSimple as PasswordResetSimpleView,
-  SigninSimple as SigninSimpleView,
-  SigninCover as SigninCoverView,
-  SignupSimple as SignupSimpleView,
-  SignupCover as SignupCoverView,
-  Account as AccountView,
-  Documentation as DocumentationView,
-  NotFound as NotFoundView,
+  // Home as HomeView,
+  // IndexView,
+  // Agency as AgencyView,
+  // CareerListing as CareerListingView,
+  // CareerListingMinimal as CareerListingMinimalView,
+  // CareerOpening as CareerOpeningView,
+  // ContactPage as ContactPageView,
+  // Coworking as CoworkingView,
+  // Elearning as ElearningView,
+  // Enterprise as EnterpriseView,
+  // Service as ServiceView,
+  // WebBasic as WebBasicView,
+  // DesktopApp as DesktopAppView,
+  // Expo as ExpoView,
+  // Startup as StartupView,
+  // DesignCompany as DesignCompanyView,
+  // MobileApp as MobileAppView,
+  // JobListing as JobListingView,
+  // Rental as RentalView,
+  // CloudHosting as CloudHostingView,
+  // Logistics as LogisticsView,
+  // Ecommerce as EcommerceView,
+  // Pricing as PricingView,
+  // About as AboutView,
+  // HelpCenter as HelpCenterView,
+  // HelpCenterArticle as HelpCenterArticleView,
+  // PortfolioPage as PortfolioPageView,
+  // PortfolioMasonry as PortfolioMasonryView,
+  // PortfolioGrid as PortfolioGridView,
+  // CompanyTerms as CompanyTermsView,
+  // ContactPageSidebarMap as ContactPageSidebarMapView,
+  // ContactPageCover as ContactPageCoverView,
+  // AboutSideCover as AboutSideCoverView,
+  // BlogSearch as BlogSearchView,
+  // BlogNewsroom as BlogNewsroomView,
+  // BlogArticle as BlogArticleView,
+  // BlogReachView as BlogReachViewView,
+  // PasswordResetCover as PasswordResetCoverView,
+  // PasswordResetSimple as PasswordResetSimpleView,
+  // SigninSimple as SigninSimpleView,
+  // SigninCover as SigninCoverView,
+  // SignupSimple as SignupSimpleView,
+  // SignupCover as SignupCoverView,
+  // Account as AccountView,
+  // Documentation as DocumentationView,
+  // NotFound as NotFoundView,
   NotFoundCover as NotFoundCoverView,
+  Stacks
 } from './views';
 
 const Routes = (): JSX.Element => {
   return (
     <Switch>
-      <Route
+      {/* <Route
         exact
         path="/"
         render={matchProps => (
@@ -71,8 +72,19 @@ const Routes = (): JSX.Element => {
             layout={MainLayout}
           />
         )}
-      />
+      /> */}
       <Route
+        exact
+        path="/"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={Stacks}
+            layout={MainLayout}
+          />
+        )}
+      />
+      {/* <Route
         exact
         path="/home"
         render={matchProps => (
@@ -566,7 +578,7 @@ const Routes = (): JSX.Element => {
             layout={MinimalLayout}
           />
         )}
-      />
+      />*/}
       <Route
         exact
         path="/not-found-cover"
@@ -577,7 +589,7 @@ const Routes = (): JSX.Element => {
             layout={MinimalLayout}
           />
         )}
-      />
+      /> 
       <Redirect to="/not-found-cover" />
     </Switch>
   );

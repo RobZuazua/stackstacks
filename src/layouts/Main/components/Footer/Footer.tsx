@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(6, 0),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(12, 0),
+      padding: theme.spacing(6, 0),
     },
     background: theme.palette.background.footer,
   },
@@ -215,15 +215,36 @@ const Footer = ({ pages, className, ...rest }: Props): JSX.Element => {
             </List>
           </Grid>
           <Grid item xs={12} md={10} className={classes.menuListContainer}>
-            <Grid container spacing={0}>
+            <Grid container spacing={6}>
               <Grid item>
-                <LandingPages />
+                {/* <LandingPages /> */}
+                <List disablePadding className={classes.menuItem}>
+                  <ListItem disableGutters className={classes.menuGroupItem}>
+                    <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
+                      Terms
+                    </Typography>
+                  </ListItem>
+                </List>
               </Grid>
               <Grid item>
-                <SupportedPages />
+                {/* <SupportedPages /> */}
+                <List disablePadding className={classes.menuItem}>
+                  <ListItem disableGutters className={classes.menuGroupItem}>
+                    <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
+                      Privacy
+                    </Typography>
+                  </ListItem>
+                </List>
               </Grid>
               <Grid item>
-                <AccountPages />
+                {/* <AccountPages /> */}
+                <List disablePadding className={classes.menuItem}>
+                  <ListItem disableGutters className={classes.menuGroupItem}>
+                    <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
+                      Contact Us
+                    </Typography>
+                  </ListItem>
+                </List>
               </Grid>
             </Grid>
           </Grid>
