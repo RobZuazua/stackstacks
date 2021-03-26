@@ -28,8 +28,8 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
     <div className={className} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12}>
-          <Typography variant="h6" color="textPrimary">
-            Basic Information
+          <Typography variant="h4" color="textPrimary">
+            Send
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -41,10 +41,10 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Full name
+            Token
           </Typography>
           <TextField
-            placeholder="Your full name"
+            placeholder="STX"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -58,10 +58,10 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            E-mail
+            Amount
           </Typography>
           <TextField
-            placeholder="Your e-mail address"
+            placeholder="0.00"
             variant="outlined"
             size="medium"
             name="email"
@@ -75,16 +75,38 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Bio
+            Recipient
           </Typography>
           <TextField
-            placeholder="Your bio"
+            placeholder="SP..."
             variant="outlined"
-            name="bio"
+            size="medium"
+            name="address"
             fullWidth
-            multiline
-            rows={4}
+            type="text"
           />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            className={classes.inputTitle}
+          >
+            Note (optional)
+          </Typography>
+          <TextField
+            placeholder="Hello World..."
+            variant="outlined"
+            size="medium"
+            name="address"
+            fullWidth
+            type="text"
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="h4" color="textPrimary">
+            Recieve
+          </Typography>
         </Grid>
         <Grid item xs={12}>
           <Divider />
@@ -95,50 +117,15 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Country
+            Your Address Here
           </Typography>
-          <TextField
-            placeholder="Country"
-            variant="outlined"
-            size="medium"
-            name="country"
-            fullWidth
-            type="text"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
             className={classes.inputTitle}
           >
-            City
+            Only send STX compatible tokens to this address
           </Typography>
-          <TextField
-            placeholder="City"
-            variant="outlined"
-            size="medium"
-            name="city"
-            fullWidth
-            type="text"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Typography
-            variant="subtitle1"
-            color="textPrimary"
-            className={classes.inputTitle}
-          >
-            Full Address
-          </Typography>
-          <TextField
-            placeholder="Your address"
-            variant="outlined"
-            size="medium"
-            name="address"
-            fullWidth
-            type="text"
-          />
         </Grid>
         <Grid item container justify="flex-start" xs={12}>
           <Button
@@ -147,7 +134,7 @@ const General = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="primary"
             size="large"
           >
-            save
+            Send
           </Button>
         </Grid>
       </Grid>

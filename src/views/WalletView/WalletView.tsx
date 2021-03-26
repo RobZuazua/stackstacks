@@ -4,7 +4,7 @@ import { parse } from 'query-string';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, General, Security, Notifications, Billing } from './components';
+import { Hero, General, Security, Notifications } from './components';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -63,22 +63,17 @@ const subPages = [
   {
     id: 'general',
     href: '/account/?pid=general',
-    title: 'General',
-  },
-  {
-    id: 'security',
-    href: '/account/?pid=security',
-    title: 'Security',
+    title: 'Trade',
   },
   {
     id: 'notifications',
     href: '/account/?pid=notifications',
-    title: 'Notifications',
+    title: 'Assets',
   },
   {
-    id: 'billing',
-    href: '/account/?pid=billing',
-    title: 'Billing Information',
+    id: 'security',
+    href: '/account/?pid=security',
+    title: 'Stack',
   },
 ];
 
@@ -96,7 +91,7 @@ const TabPanel = ({ children, value, index, ...other }: TabPanelProps): JSX.Elem
 
 const WalletView = (): JSX.Element => {
   const classes = useStyles();
-  let pageId = parse(window.location.search).pid || 'general';
+  let pageId = parse(window.location.search).pid || 'security';
 
   return (
     <div className={classes.root}>
@@ -141,9 +136,6 @@ const WalletView = (): JSX.Element => {
               </TabPanel>
               <TabPanel value={pageId} index={'notifications'}>
                 <Notifications />
-              </TabPanel>
-              <TabPanel value={pageId} index={'billing'}>
-                <Billing />
               </TabPanel>
               </>
             </CardBase>
