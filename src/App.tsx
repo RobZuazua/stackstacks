@@ -1,25 +1,27 @@
+/**
+ * Caution: Consider this file when using react-scripts
+ * 
+ * You may delete this file and its occurrences from the project filesystem if you are using GatsbyJS or NextJS version
+ */
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
+import Routes from './Routes';
 
-function App() {
+import 'react-lazy-load-image-component/src/effects/opacity.css';
+import 'leaflet/dist/leaflet.css';
+import 'assets/css/index.css';
+
+import 'swiper/css/swiper.min.css';
+import 'aos/dist/aos.css';
+
+const browserHistory = createBrowserHistory();
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={browserHistory}>
+      <Routes />
+    </Router>
   );
 }
 
