@@ -7,10 +7,10 @@ const userSession = new UserSession({ appConfig });
 
 const authOptions = {
     appDetails: {
-      name: 'My App',
-      icon: window.location.origin + '/my-app-logo.svg',
+      name: 'neptune',
+      icon: 'https://crashcodeexamples.s3.us-east-2.amazonaws.com/neptune.svg',
     },
-    redirectTo: '/',
+    redirectTo: '/wallet',
     finished: () => {
       let userData = userSession.loadUserData();
       // Save or otherwise utilize userData post-authentication

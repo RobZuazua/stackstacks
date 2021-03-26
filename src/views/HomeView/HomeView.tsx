@@ -35,9 +35,9 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Stacks = (): JSX.Element => {
+const HomeView = (): JSX.Element => {
   const classes = useStyles();
-
+  
   return (
     <div>
       <Hero />
@@ -51,4 +51,4 @@ const Stacks = (): JSX.Element => {
   );
 };
 
-export default Stacks;
+export default HomeView;

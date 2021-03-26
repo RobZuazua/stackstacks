@@ -5,6 +5,7 @@ import { Typography, Button } from '@material-ui/core';
 import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
+import { useConnect } from '@stacks/connect-react';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -69,6 +70,8 @@ const useStyles = makeStyles(theme => ({
 const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
+  const { doOpenAuth } = useConnect();
+
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <div className={classes.hero}>
@@ -92,7 +95,7 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
                 </span>
               }
               ctaGroup={[
-                <Button variant="contained" size="large">
+                <Button variant="contained" size="large" onClick={()=>doOpenAuth()}>
                   Connect Wallet
                 </Button>,
               ]}

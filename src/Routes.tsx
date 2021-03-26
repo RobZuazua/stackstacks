@@ -56,7 +56,8 @@ import {
   // Documentation as DocumentationView,
   // NotFound as NotFoundView,
   NotFoundCover as NotFoundCoverView,
-  Stacks
+  HomeView,
+  WalletView
 } from './views';
 
 const Routes = (): JSX.Element => {
@@ -79,7 +80,18 @@ const Routes = (): JSX.Element => {
         render={matchProps => (
           <WithLayout
             {...matchProps}
-            component={Stacks}
+            component={HomeView}
+            layout={MainLayout}
+          />
+        )}
+      />
+      <Route
+        exact
+        path="/wallet"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={WalletView}
             layout={MainLayout}
           />
         )}

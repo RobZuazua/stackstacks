@@ -41,8 +41,8 @@
 // export { default as SigninCover } from './SigninCover';
 // export { default as SignupSimple } from './SignupSimple';
 // export { default as SignupCover } from './SignupCover';
-// export { default as Account } from './Account';
+export { default as WalletView } from './WalletView';
 // export { default as Documentation } from './Documentation';
 // export { default as NotFound } from './NotFound';
 export { default as NotFoundCover } from './NotFoundCover';
-export { default as Stacks } from './Stacks';
+export { default as HomeView } from './HomeView';
