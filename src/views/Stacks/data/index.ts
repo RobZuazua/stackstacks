@@ -1,28 +1,28 @@
 export const features = {
   items: [
     {
-      icon: 'fas fa-bolt',
-      title: 'Fast',
+      icon: 'fas fa-envelope',
+      title: 'Send STX',
       subtitle:
-        'Instead of constantly worrying about when your home will be in demand',
-    },
-    {
-      icon: 'fas fa-puzzle-piece',
-      title: 'Integrity',
-      subtitle:
-        'Instead of constantly worrying about when your home will be in demand',
+        'Instantly send STX tokens to any address',
     },
     {
       icon: 'fas fa-bullseye',
-      title: 'Targeted',
+      title: 'Custom Token Support',
       subtitle:
-        'Instead of constantly worrying about when your home will be in demand',
+        'HODL supported tokens built on top of the Stacks network',
     },
     {
-      icon: 'fas fa-bullhorn',
-      title: 'Efficient',
+      icon: 'fas fa-users',
+      title: 'Delegated Stacking',
       subtitle:
-        'Instead of constantly worrying about when your home will be in demand',
+        'Earn BTC by stacking your STX tokens through our pool',
+    },
+    {
+      icon: 'fas fa-qrcode',
+      title: 'Receive STX',
+      subtitle:
+        'Receive STX tokens via QR code or address',
     },
   ],
   properties: [

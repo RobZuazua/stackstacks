@@ -151,30 +151,30 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         </ListItemIcon>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Typography variant="h6" color="textPrimary" gutterBottom>
-          Landings
+        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"#FAQs"}>
+          What is Stacks?
         </Typography>
-        <LandingPages />
+        {/* <LandingPages /> */}
       </ListItem>
       <ListItem className={classes.listItem}>
         <Divider className={classes.divider} />
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Typography variant="h6" color="textPrimary" gutterBottom>
-          Pages
+        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"#About"}>
+          About
         </Typography>
-        <SupportedPages />
+        {/* <SupportedPages /> */}
       </ListItem>
       <ListItem className={classes.listItem}>
         <Divider className={classes.divider} />
       </ListItem>
-      <ListItem className={classes.listItem}>
+      {/* <ListItem className={classes.listItem}>
         <Typography variant="h6" color="textPrimary" gutterBottom>
           Account
         </Typography>
         <AccountPages />
-      </ListItem>
-      <ListItem className={classes.listItem}>
+      </ListItem> */}
+      {/* <ListItem className={classes.listItem}>
         <Button
           variant="outlined"
           fullWidth
@@ -183,7 +183,7 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         >
           Documentation
         </Button>
-      </ListItem>
+      </ListItem> */}
       <ListItem className={classes.listItem}>
         <Button
           variant="contained"
@@ -193,7 +193,7 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
           target="blank"
           href="https://material-ui.com/store/items/the-front-landing-page/"
         >
-          Buy Now
+          Connect Wallet
         </Button>
       </ListItem>
     </List>

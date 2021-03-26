@@ -188,29 +188,32 @@ const Footer = ({ pages, className, ...rest }: Props): JSX.Element => {
             <List disablePadding>
               <ListItem disableGutters className={classes.logoContainerItem}>
                 <div className={classes.logoContainer}>
-                  <a href="/" title="thefront">
+                  <a href="/" title="neptune">
                     <Image
                       className={classes.logoImage}
-                      src="https://assets.maccarianagency.com/the-front/logos/logo-negative.svg"
-                      alt="thefront"
+                      src="https://crashcodeexamples.s3.us-east-2.amazonaws.com/neptune-dark.svg"
+                      alt="neptune"
                       lazy={false}
                     />
                   </a>
                 </div>
               </ListItem>
               <ListItem disableGutters>
-                <IconButton className={classes.socialIcon}>
+                {/* <IconButton className={classes.socialIcon}>
                   <FacebookIcon className={classes.icon} />
-                </IconButton>
-                <IconButton className={classes.socialIcon}>
+                </IconButton> */}
+                {/* <IconButton className={classes.socialIcon}>
                   <InstagramIcon className={classes.icon} />
+                </IconButton> */}
+                <IconButton className={classes.socialIcon} target="_blank" href={"https://twitter.com/RobZuazua"}>
+                  <TwitterIcon className={classes.icon}/>
                 </IconButton>
-                <IconButton className={classes.socialIcon}>
+                <IconButton className={classes.socialIcon} target="_blank" href={"https://twitter.com/EshanHalekote"}>
                   <TwitterIcon className={classes.icon} />
                 </IconButton>
-                <IconButton className={classes.socialIcon}>
+                {/* <IconButton className={classes.socialIcon}>
                   <PinterestIcon className={classes.icon} />
-                </IconButton>
+                </IconButton> */}
               </ListItem>
             </List>
           </Grid>
@@ -218,33 +221,33 @@ const Footer = ({ pages, className, ...rest }: Props): JSX.Element => {
             <Grid container spacing={6}>
               <Grid item>
                 {/* <LandingPages /> */}
-                <List disablePadding className={classes.menuItem}>
+                {/* <List disablePadding className={classes.menuItem}>
                   <ListItem disableGutters className={classes.menuGroupItem}>
                     <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
                       Terms
                     </Typography>
                   </ListItem>
-                </List>
+                </List> */}
               </Grid>
               <Grid item>
                 {/* <SupportedPages /> */}
-                <List disablePadding className={classes.menuItem}>
+                {/* <List disablePadding className={classes.menuItem}>
                   <ListItem disableGutters className={classes.menuGroupItem}>
                     <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
                       Privacy
                     </Typography>
                   </ListItem>
-                </List>
+                </List> */}
               </Grid>
               <Grid item>
                 {/* <AccountPages /> */}
-                <List disablePadding className={classes.menuItem}>
+                {/* <List disablePadding className={classes.menuItem}>
                   <ListItem disableGutters className={classes.menuGroupItem}>
                     <Typography variant="body2" component={'a'} className={classes.menuGroupTitle} href={"https://google.com"}>
                       Contact Us
                     </Typography>
                   </ListItem>
-                </List>
+                </List> */}
               </Grid>
             </Grid>
           </Grid>

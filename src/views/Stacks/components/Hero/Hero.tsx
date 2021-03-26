@@ -88,7 +88,7 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
               }
               subtitle={
                 <span className={classes.textWhite}>
-                  Start trading, stacking, or exploring Stacks with Xenon
+                  Start trading, stacking, or exploring Stacks with neptune
                 </span>
               }
               ctaGroup={[

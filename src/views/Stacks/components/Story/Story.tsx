@@ -12,13 +12,13 @@ const Story = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   });
 
   return (
-    <div className={className} {...rest}>
-      <SectionHeader title="Who we are" label="Our Story" data-aos="fade-up" />
+    <div className={className} {...rest} id="FAQs">
+      <SectionHeader title="FAQs" data-aos="fade-up" />
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12} sm={6} data-aos={'fade-up'}>
           <DescriptionListIcon
-            title="Who are we?"
-            subtitle="Our sign up is dead simple. We only require your basic company information and what type of data storage you want. Our sign up is dead simple. We only require your basic company information and what type of data storage you want."
+            title="What is Stacks?"
+            subtitle="Stacks makes Bitcoin programmable, enabling decentralized apps and smart contracts that inherit all of Bitcoin’s powers."
             icon={
               <Icon
                 fontIconClass="fas fa-book"
@@ -31,8 +31,8 @@ const Story = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         </Grid>
         <Grid item xs={12} sm={6} data-aos={'fade-up'}>
           <DescriptionListIcon
-            title="What’s up with the name?"
-            subtitle="We support bulk uploading via SQL, integrations with most data storage products, or you can use our API. Simply select where you'd like to transfer your data and we'll being the process of migrating it instantly."
+            title="What are STX Tokens?"
+            subtitle="STX is the native currency of the Stacks ecosystem."
             icon={
               <Icon
                 fontIconClass="fas fa-briefcase"
@@ -43,11 +43,39 @@ const Story = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             align="left"
           />
         </Grid>
-        <Grid item container justify="center" xs={12} data-aos={'fade-up'}>
+        <Grid item xs={12} sm={6} data-aos={'fade-up'}>
+          <DescriptionListIcon
+            title="What is Delegated Stacking?"
+            subtitle="Delegated Stacking is a process which lets you lock up your STX tokens to earn bitcoin!"
+            icon={
+              <Icon
+                fontIconClass="fas fa-briefcase"
+                size="medium"
+                fontIconColor={colors.yellow[700]}
+              />
+            }
+            align="left"
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} data-aos={'fade-up'}>
+          <DescriptionListIcon
+            title="Who are we?"
+            subtitle="Professional software enginners passionate about security, bitcoin, and the future of the open internet! Our twitter accounts are linked below."
+            icon={
+              <Icon
+                fontIconClass="fas fa-briefcase"
+                size="medium"
+                fontIconColor={colors.yellow[700]}
+              />
+            }
+            align="left"
+          />
+        </Grid>
+        {/* <Grid item container justify="center" xs={12} data-aos={'fade-up'}>
           <Button variant="outlined" color="primary">
             Learn more
           </Button>
-        </Grid>
+        </Grid> */}
       </Grid>
     </div>
   );

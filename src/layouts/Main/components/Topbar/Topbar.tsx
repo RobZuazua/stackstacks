@@ -246,11 +246,11 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
   return (
     <Toolbar disableGutters className={classes.toolbar} {...rest}>
       <div className={classes.logoContainer}>
-        <a href="/" title="thefront">
+        <a href="/" title="neptune">
           <Image
             className={classes.logoImage}
-            src={themeMode === 'light' ? 'https://assets.maccarianagency.com/the-front/logos/logo.svg' : 'https://assets.maccarianagency.com/the-front/logos/logo-negative.svg'}
-            alt="thefront"
+            src={themeMode === 'light' ? 'https://crashcodeexamples.s3.us-east-2.amazonaws.com/neptune.svg' : 'https://crashcodeexamples.s3.us-east-2.amazonaws.com/neptune-dark.svg'}
+            alt="neptune"
             lazy={false}
           />
         </a>
@@ -258,7 +258,44 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
       <div className={classes.flexGrow} />
       <Hidden smDown>
         <List disablePadding className={classes.navigationContainer}>
-          {[landings, supportedPages, account].map((page, i) => (
+        
+          <ListItem
+                aria-describedby={"1"}
+                //onClick={e => handleClick(e, "1")}
+                className={clsx(
+                  classes.listItem,
+                  openedPopoverId === "1" ? classes.listItemActive : '',
+                )}
+              >
+                <Typography
+                  variant="body1"
+                  component={'a'}
+                  href={"#FAQs"}
+                  color="textPrimary"
+                  className={clsx(classes.listItemText, 'menu-item')}
+                >
+                  What is Stacks?
+                </Typography>
+              </ListItem>
+              <ListItem
+                aria-describedby={"1"}
+                //onClick={e => handleClick(e, "1")}
+                className={clsx(
+                  classes.listItem,
+                  openedPopoverId === "1" ? classes.listItemActive : '',
+                )}
+              >
+                <Typography
+                  variant="body1"
+                  component={'a'}
+                  href={"#About"}
+                  color="textPrimary"
+                  className={clsx(classes.listItemText, 'menu-item')}
+                >
+                  About
+                </Typography>
+              </ListItem>
+          {/* {[landings, supportedPages, account].map((page, i) => (
             <div key={page.id}>
               <ListItem
                 aria-describedby={page.id}
@@ -303,10 +340,8 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                 <div>{renderPages(page.id)}</div>
               </Popover>
             </div>
-          ))}
-          <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
-            <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
-          </ListItem>
+          ))} */}
+          
           {/* <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               variant="outlined"
@@ -316,7 +351,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
               Documentation
             </Button>
           </ListItem> */}
-          <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
+          {/* <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
             <Button
               variant="contained"
               color="primary"
@@ -327,7 +362,31 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
             >
               Connect Wallet
             </Button>
+          </ListItem> */}
+           <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
+            <DarkModeToggler themeMode={themeMode} onClick={() => themeToggler()} />
           </ListItem>
+          <ListItem
+                aria-describedby={"1"}
+                //onClick={e => handleClick(e, "1")}
+                className={clsx(
+                  classes.listItem,
+                  openedPopoverId === "1" ? classes.listItemActive : '',
+                )}
+              >
+                <Typography
+                  variant="body1"
+                  // component={'a'}
+                  // href={"#About"}
+                  color="textPrimary"
+                  className={clsx(classes.listItemText, 'menu-item')}
+                  style={{color:"red"}}
+                >
+                  DISCONNECTED •
+                </Typography>
+              </ListItem>
+             
+              
         </List>
       </Hidden>
       <Hidden mdUp>

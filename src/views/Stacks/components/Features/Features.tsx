@@ -70,7 +70,7 @@ const Features = ({ data, className, ...rest }: ViewComponentProps): JSX.Element
   const { items, properties } = data;
 
   return (
-    <div className={className} {...rest}>
+    <div className={className} {...rest} id="About">
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12} md={6} data-aos="fade-up">
           <div className={classes.featureItems}>
