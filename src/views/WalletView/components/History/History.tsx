@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
   useMediaQuery,
@@ -11,6 +11,8 @@ import {
   Divider,
 } from '@material-ui/core';
 import { CardJobMinimal } from 'components/organisms';
+import { UserContext } from 'App';
+import jwt_decode from "jwt-decode";
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -37,6 +39,10 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
     defaultMatches: true,
   });
 
+  const connectedString = useContext(UserContext);
+  let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
+  const stxAddress = decodedObj ? decodedObj.profile.stxAddress.mainnet : "";
+
   return (
     <div className={className} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
@@ -53,9 +59,10 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
         <Grid item xs={12}>
           {transactions.map((item: any, index: number) => (
             <Grid item xs={12} key={index}>
+              <a target="_blank" href={`https://explorer.stacks.co/txid/${item.tx_id}?chain=mainnet`}>
               <CardJobMinimal
-                title={`placehodler`}
-                subtitle={`placehodler`}
+                title={item.sender_address === stxAddress ? "Sent" : item.token_transfer.recipient_address === stxAddress ? "Received" : "Other"}
+                subtitle={(parseInt(item.token_transfer.amount)/1000000).toString() + " STX"}
                 // showArrow
                 titleProps={{
                   variant: 'h6',
@@ -64,6 +71,7 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
                   variant: 'subtitle1',
                 }}
               />
+              </a>
             </Grid>
           ))}
         </Grid>
