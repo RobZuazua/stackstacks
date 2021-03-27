@@ -389,8 +389,8 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                   connectedString ?
                   <Typography
                   variant="body1"
-                  // component={'a'}
-                  // href={"#About"}
+                  component={'a'}
+                  href={"/wallet"}
                   color="textPrimary"
                   className={clsx(classes.listItemText, 'menu-item')}
                   style={{color:"green"}}

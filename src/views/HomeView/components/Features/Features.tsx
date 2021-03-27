@@ -165,8 +165,10 @@ const Features = ({ data, className, ...rest }: ViewComponentProps): JSX.Element
                   color="primary"
                   className={classes.cta}
                   data-aos="fade-up"
+                  href="/wallet"
+
                 >
-                  Your Wallet is Connected
+                  Go to Wallet!
                 </Button>
               )
               : (

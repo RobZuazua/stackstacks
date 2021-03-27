@@ -203,9 +203,9 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
           fullWidth
           component="a"
           target="blank"
-          href="https://material-ui.com/store/items/the-front-landing-page/"
+          href="/wallet"
          >
-          Your Wallet is Connected
+          Go to Wallet!
         </Button>
           )
           : (
@@ -215,7 +215,6 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
           fullWidth
           component="a"
           target="blank"
-          href="https://material-ui.com/store/items/the-front-landing-page/"
           onClick={()=>doOpenAuth()}
         >
           Connect Wallet

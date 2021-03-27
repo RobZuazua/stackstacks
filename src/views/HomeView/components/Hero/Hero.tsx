@@ -99,8 +99,8 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
               ctaGroup={
                 connectedString ?
                 [
-                  <Button variant="contained" size="large">
-                    Your Wallet is Connected
+                  <Button variant="contained" size="large" href={"/wallet"}>
+                    Go to Wallet!
                   </Button>,
                 ]
                 : 
