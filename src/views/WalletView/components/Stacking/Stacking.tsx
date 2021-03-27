@@ -81,7 +81,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             fullWidth
             type="number"
           />
-          Must Stack at least 250 STX
+          Must Stack at least 10 STX
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -124,8 +124,9 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             type="submit"
             color="primary"
             size="large"
+            disabled={true}
           >
-            PREVIEW STACK
+            PREVIEW STACK (COMING SOON)
           </Button>
         </Grid>
       </Grid>

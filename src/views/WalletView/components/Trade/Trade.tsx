@@ -29,7 +29,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
   });
 
   const connectedString = useContext(UserContext);
-  let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
+  let decodedObj:any = connectedString ? jwt_decode(connectedString): "";
   const { doSTXTransfer } = useConnect();
 
   const [token, setToken] = useState("STX");
@@ -129,6 +129,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             size="medium"
             fullWidth
             type="text"
+            onChange={handleChange}
           />
         </Grid>
         <Grid item container justify="flex-start" xs={12}>
@@ -140,6 +141,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             onClick={e=>doSTXTransfer({
               recipient, 
               amount,
+              memo: note,
               network: NETWORK,
               onFinish: data => {
                 console.log(data);

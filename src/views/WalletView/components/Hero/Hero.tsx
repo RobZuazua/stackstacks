@@ -43,8 +43,8 @@ const Hero = ({ className, account, ...rest }: ViewComponentProps): JSX.Element 
     <div className={clsx(classes.root, className)} {...rest}>
       <Section>
         <SectionHeader
-          title={account ? account.balance : ""}
-          subtitle="Micro Stacks - uSTX"
+          title={account ? (parseInt(account.balance)/1000000).toString() : ""}
+          subtitle="Stacks - STX"
           ctaGroup={[<div className={classes.textWhite}>{connectedString ? decodedObj.profile.stxAddress.mainnet : ""}</div>]}
           align="left"
           disableGutter

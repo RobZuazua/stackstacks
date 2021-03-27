@@ -24,11 +24,11 @@ const Assets = ({ className, account, ...rest }: ViewComponentProps): JSX.Elemen
     defaultMatches: true,
   });
 
-  const stxBalance = account ? account.balance : '';
+  const stxBalance = account ? (parseInt(account.balance)/1000000).toString() : '';
   const jobs = [
     {
-      title: 'Micro Stacks',
-      subtitle: 'uSTX',
+      title: 'Stacks',
+      subtitle: 'STX',
       amount: stxBalance,
     },
     {

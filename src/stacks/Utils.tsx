@@ -1,6 +1,3 @@
-import React from 'react';
-import { Connect, useConnect, AppConfig, UserSession } from '@stacks/connect-react';
-import { Button } from '@material-ui/core';
 import { accountsApi } from './Constants';
 
 /**
@@ -28,5 +25,7 @@ export function fetchAccountTransactions(addressAsString) {
     return accountsApi
     .getAccountTransactions({principal:addressAsString})
     .then(response => response.results)
+  } else {
+    return Promise.reject();
   }
 }
