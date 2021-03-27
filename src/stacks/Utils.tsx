@@ -17,3 +17,16 @@ import { accountsApi } from './Constants';
     return Promise.reject();
   }
 }
+
+/**
+ * Uses the AccountsApi of the stacks blockchain api client library,
+ * returns an array of transactions
+ */
+export function fetchAccountTransactions(addressAsString) {
+  console.log(`Getting transactions for account "${addressAsString}"`)
+  if(addressAsString) {
+    return accountsApi
+    .getAccountTransactions({principal:addressAsString})
+    .then(response => response.results)
+  }
+}

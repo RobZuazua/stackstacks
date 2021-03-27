@@ -4,9 +4,9 @@ import { parse } from 'query-string';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, Trade, Stacking, Assets } from './components';
+import { Hero, Trade, Stacking, Assets, History } from './components';
 import { UserContext } from 'App';
-import { fetchAccount } from 'stacks/Utils';
+import { fetchAccount, fetchAccountTransactions } from 'stacks/Utils';
 import jwt_decode from "jwt-decode";
 
 const useStyles = makeStyles(theme => ({
@@ -78,6 +78,11 @@ const subPages = [
     href: '/wallet/?pid=stack',
     title: 'Stack',
   },
+  {
+    id: 'history',
+    href: '/wallet/?pid=history',
+    title: 'Transaction History',
+  },
 ];
 
 interface TabPanelProps {
@@ -99,13 +104,22 @@ const WalletView = (): JSX.Element => {
   const connectedString = useContext(UserContext);
   let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
   const [userAccountAPI, setUserAccountAPI] = useState(null);
+  const [transactionHistory, setTransactionHistory] = useState([]);
 
   const stxAddress = decodedObj ? decodedObj.profile.stxAddress.mainnet : "";
   useEffect(() => {
     fetchAccount(stxAddress).then(acc => {
+      console.log("Account:")
       console.log(acc);
       setUserAccountAPI(acc);
     });
+
+    fetchAccountTransactions(stxAddress).then(transactions => {
+      console.log("Transactions:")
+      console.log(transactions)
+      setTransactionHistory(transactions);
+    })
+
   }, [stxAddress]);
 
   return (
@@ -151,6 +165,9 @@ const WalletView = (): JSX.Element => {
               </TabPanel>
               <TabPanel value={pageId} index={'stack'}>
                 <Stacking account={userAccountAPI}/>
+              </TabPanel>
+              <TabPanel value={pageId} index={'history'}>
+                <History account={userAccountAPI} transactions = {transactionHistory}/>
               </TabPanel>
               </>
             </CardBase>
