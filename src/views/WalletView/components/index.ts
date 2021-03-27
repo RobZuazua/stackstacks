@@ -1,5 +1,4 @@
 export { default as Hero } from './Hero';
-export { default as General } from './General';
-export { default as Security } from './Security';
-export { default as Notifications } from './Notifications';
-export { default as Billing } from './Billing';
+export { default as Trade } from './Trade';
+export { default as Stacking } from './Stacking';
+export { default as Assets } from './Assets';

@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Stacking = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -39,7 +39,7 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12}>
           <div className={classes.titleCta}>
-            <Typography variant="h6" color="textPrimary">
+            <Typography variant="h4" color="textPrimary">
               Stack STX
             </Typography>
           </div>
@@ -53,15 +53,16 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Pool
+            Pool's address
           </Typography>
           <TextField
-            placeholder="Triton Pool"
+            placeholder="SP25V7B7NQNS3ZWRG6WX4966S65E1K0731Z0JMBNK"
             variant="outlined"
             size="medium"
             name="fullname"
             fullWidth
-            type="password"
+            type="text"
+            disabled={true}
           />
           We currently only support the Triton stacking pool
         </Grid>
@@ -77,10 +78,10 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             placeholder="0.00 STX"
             variant="outlined"
             size="medium"
-            name="fullname"
             fullWidth
-            type="password"
+            type="number"
           />
+          Must Stack at least 250 STX
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -94,9 +95,8 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             placeholder="1"
             variant="outlined"
             size="medium"
-            name="fullname"
             fullWidth
-            type="password"
+            type="number"
           />
           Minimum 1. Your STX will be locked for the duration of the cycles specified
         </Grid>
@@ -112,9 +112,8 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             placeholder="0x..."
             variant="outlined"
             size="medium"
-            name="fullname"
             fullWidth
-            type="password"
+            type="text"
           />
           You MUST provide a valid Bitcoin address in order to recieve your stacking reward
         </Grid>
@@ -134,4 +133,4 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   );
 };
 
-export default Security;
+export default Stacking;

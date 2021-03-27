@@ -4,7 +4,7 @@ import { parse } from 'query-string';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, General, Security, Notifications } from './components';
+import { Hero, Trade, Stacking, Assets } from './components';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,18 +61,18 @@ const useStyles = makeStyles(theme => ({
 
 const subPages = [
   {
-    id: 'general',
-    href: '/account/?pid=general',
+    id: 'trade',
+    href: '/wallet/?pid=trade',
     title: 'Trade',
   },
   {
-    id: 'notifications',
-    href: '/account/?pid=notifications',
+    id: 'assets',
+    href: '/wallet/?pid=assets',
     title: 'Assets',
   },
   {
-    id: 'security',
-    href: '/account/?pid=security',
+    id: 'stack',
+    href: '/wallet/?pid=stack',
     title: 'Stack',
   },
 ];
@@ -91,7 +91,7 @@ const TabPanel = ({ children, value, index, ...other }: TabPanelProps): JSX.Elem
 
 const WalletView = (): JSX.Element => {
   const classes = useStyles();
-  let pageId = parse(window.location.search).pid || 'security';
+  let pageId = parse(window.location.search).pid || 'trade';
 
   return (
     <div className={classes.root}>
@@ -128,14 +128,14 @@ const WalletView = (): JSX.Element => {
           <Grid item xs={12} md={9}>
             <CardBase withShadow align="left">
               <>
-              <TabPanel value={pageId} index={'general'}>
-                <General />
+              <TabPanel value={pageId} index={'trade'}>
+                <Trade />
               </TabPanel>
-              <TabPanel value={pageId} index={'security'}>
-                <Security />
+              <TabPanel value={pageId} index={'assets'}>
+                <Assets />
               </TabPanel>
-              <TabPanel value={pageId} index={'notifications'}>
-                <Notifications />
+              <TabPanel value={pageId} index={'stack'}>
+                <Stacking />
               </TabPanel>
               </>
             </CardBase>

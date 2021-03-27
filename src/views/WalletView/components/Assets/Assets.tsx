@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Notifications = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Assets = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -31,12 +31,9 @@ const Notifications = ({ className, ...rest }: ViewComponentProps): JSX.Element 
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12}>
           <div className={classes.titleCta}>
-            <Typography variant="h6" color="textPrimary">
-              Notifications
+            <Typography variant="h4" color="textPrimary">
+              Tokens
             </Typography>
-            <Button variant="outlined" color="primary">
-              Reset all
-            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -113,4 +110,4 @@ const Notifications = ({ className, ...rest }: ViewComponentProps): JSX.Element 
   );
 };
 
-export default Notifications;
+export default Assets;
