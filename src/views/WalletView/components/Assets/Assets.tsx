@@ -7,7 +7,6 @@ import {
   Divider,
 } from '@material-ui/core';
 import Jobs from '../Jobs';
-import { jobs } from 'views/WalletView/data';
 
 const useStyles = makeStyles(() => ({
   titleCta: {
@@ -17,13 +16,27 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const Assets = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Assets = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
+
+  const stxBalance = account ? account.balance : '';
+  const jobs = [
+    {
+      title: 'Micro Stacks',
+      subtitle: 'uSTX',
+      amount: stxBalance,
+    },
+    {
+      title: 'Example Coin',
+      subtitle: 'EXAMPLE',
+      amount: '0',
+    },
+  ];
 
   return (
     <div className={className} {...rest}>

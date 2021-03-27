@@ -33,9 +33,10 @@ const App = (): JSX.Element => {
     redirectTo: '/',
     onFinish: () => {
       let userData = userSession.loadUserData();
+      console.log(userData);
       setUserState(userData.authResponseToken);
       localStorage.setItem('id', userData.authResponseToken);
-      window.location.href = '/wallet'
+      // window.location.href = '/wallet'
   
     },
     userSession: userSession,

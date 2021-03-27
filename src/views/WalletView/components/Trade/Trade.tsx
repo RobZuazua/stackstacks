@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
+import jwt_decode from "jwt-decode";
 import {
   useMediaQuery,
   Grid,
@@ -8,6 +9,7 @@ import {
   Button,
   Divider,
 } from '@material-ui/core';
+import { UserContext } from 'App';
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -16,13 +18,16 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Trade = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
+
+  const connectedString = useContext(UserContext);
+  let decodedObj:any = jwt_decode(connectedString);
 
   return (
     <div className={className} {...rest}>
@@ -67,7 +72,7 @@ const Trade = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             fullWidth
             type="number"
           />
-          There will be a 1 STX fee added to the amount you specify
+          There will be a {"< 1"} STX fee added to the amount you specify
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -108,7 +113,7 @@ const Trade = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="primary"
             size="large"
           >
-            Send
+            Preview Transaction
           </Button>
         </Grid>
         <Grid item xs={12}>
@@ -125,7 +130,7 @@ const Trade = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            ST20CXAA8S6SQQHFF4RKAWA4M14VMNT55QQ3LYGZ5
+            {connectedString ? decodedObj.profile.stxAddress.mainnet : ""}
           </Typography>
           <Typography
             variant="subtitle1"

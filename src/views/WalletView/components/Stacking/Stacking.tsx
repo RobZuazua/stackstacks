@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Stacking = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const theme = useTheme();
@@ -125,7 +125,7 @@ const Stacking = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="primary"
             size="large"
           >
-            STACK
+            PREVIEW STACK
           </Button>
         </Grid>
       </Grid>

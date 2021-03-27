@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import { parse } from 'query-string';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
 import { Hero, Trade, Stacking, Assets } from './components';
+import { UserContext } from 'App';
+import { fetchAccount } from 'stacks/Utils';
+import jwt_decode from "jwt-decode";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -93,9 +96,21 @@ const WalletView = (): JSX.Element => {
   const classes = useStyles();
   let pageId = parse(window.location.search).pid || 'trade';
 
+  const connectedString = useContext(UserContext);
+  let decodedObj:any = jwt_decode(connectedString);
+  const [userAccountAPI, setUserAccountAPI] = useState(null);
+
+  const stxAddress = decodedObj ? decodedObj.profile.stxAddress.mainnet : "";
+  useEffect(() => {
+    fetchAccount(stxAddress).then(acc => {
+      console.log(acc);
+      setUserAccountAPI(acc);
+    });
+  }, [stxAddress]);
+
   return (
     <div className={classes.root}>
-      <Hero />
+      <Hero account={userAccountAPI}/>
       <SectionAlternate className={classes.section}>
         <Grid container spacing={4}>
           <Grid item xs={12} md={3}>
@@ -129,13 +144,13 @@ const WalletView = (): JSX.Element => {
             <CardBase withShadow align="left">
               <>
               <TabPanel value={pageId} index={'trade'}>
-                <Trade />
+                <Trade account={userAccountAPI}/>
               </TabPanel>
               <TabPanel value={pageId} index={'assets'}>
-                <Assets />
+                <Assets account={userAccountAPI}/>
               </TabPanel>
               <TabPanel value={pageId} index={'stack'}>
-                <Stacking />
+                <Stacking account={userAccountAPI}/>
               </TabPanel>
               </>
             </CardBase>
@@ -146,5 +161,4 @@ const WalletView = (): JSX.Element => {
   );
 };
 
-export default WalletView
-;
+export default WalletView;

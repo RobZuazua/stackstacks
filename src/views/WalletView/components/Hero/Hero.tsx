@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import { Image } from 'components/atoms';
 import { Grid } from '@material-ui/core';
+import jwt_decode from "jwt-decode";
+import { UserContext } from 'App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,15 +34,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
+const Hero = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
+  const connectedString = useContext(UserContext);
+  let decodedObj:any = jwt_decode(connectedString);
+
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Section>
         <SectionHeader
-          title="5702.45"
-          subtitle="Stacks - STX"
-          ctaGroup={[<div className={classes.textWhite}>ST20CXAA8S6SQQHFF4RKAWA4M14VMNT55QQ3LYGZ5</div>]}
+          title={account ? account.balance : ""}
+          subtitle="Micro Stacks - uSTX"
+          ctaGroup={[<div className={classes.textWhite}>{connectedString ? decodedObj.profile.stxAddress.mainnet : ""}</div>]}
           align="left"
           disableGutter
           titleProps={{

@@ -428,7 +428,20 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                 </Button>
               </ListItem>
                )
-               : (<></>)
+               : (
+                <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component="a"
+                  target="blank"
+                  className={classes.listItemButton}
+                  onClick={()=>doOpenAuth()}
+                >
+                  Connect Wallet
+                </Button>
+              </ListItem>
+               )
              }
                
         </List>
