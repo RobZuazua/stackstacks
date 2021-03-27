@@ -97,7 +97,7 @@ const WalletView = (): JSX.Element => {
   let pageId = parse(window.location.search).pid || 'trade';
 
   const connectedString = useContext(UserContext);
-  let decodedObj:any = jwt_decode(connectedString);
+  let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
   const [userAccountAPI, setUserAccountAPI] = useState(null);
 
   const stxAddress = decodedObj ? decodedObj.profile.stxAddress.mainnet : "";

@@ -29,7 +29,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
   });
 
   const connectedString = useContext(UserContext);
-  let decodedObj:any = jwt_decode(connectedString);
+  let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
   const { doSTXTransfer } = useConnect();
 
   const [token, setToken] = useState("STX");

@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 const Hero = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
   const connectedString = useContext(UserContext);
-  let decodedObj:any = jwt_decode(connectedString);
+  let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
