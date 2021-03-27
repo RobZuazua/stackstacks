@@ -63,7 +63,10 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
 
   const connectedString = useContext(UserContext);
 
-  
+  const logout = (): void => {
+    localStorage.setItem('id', '');
+    window.location.href = '/'
+  }
 
   const MenuGroup = ({ item }: MenuGroupProps): JSX.Element => (
     <List disablePadding>
@@ -159,7 +162,7 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
       </ListItem>
       <ListItem className={classes.listItem}>
         <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"#FAQs"}>
-          What is Stacks?
+          What is Stacks
         </Typography>
         {/* <LandingPages /> */}
       </ListItem>
@@ -219,8 +222,22 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         </Button>
           )
         }
-        
       </ListItem>
+      {
+               connectedString ? (
+                <ListItem className={classes.listItem}>
+                <Button
+                  variant="outlined"
+                  fullWidth
+                  component="a"
+                  onClick={()=>logout()}
+                >
+                  Logout
+                </Button>
+              </ListItem>
+               )
+               : (<></>)
+             }
     </List>
   );
 };

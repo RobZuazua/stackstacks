@@ -139,6 +139,11 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
     setOpenedPopoverId(null);
   };
 
+  const logout = (): void => {
+    localStorage.setItem('id', '');
+    window.location.href = '/'
+  }
+
   const { doOpenAuth } = useConnect();
 
   const connectedString = useContext(UserContext);
@@ -280,7 +285,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                   color="textPrimary"
                   className={clsx(classes.listItemText, 'menu-item')}
                 >
-                  What is Stacks?
+                  What is Stacks
                 </Typography>
               </ListItem>
               <ListItem
@@ -408,8 +413,24 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                 }
                 
               </ListItem>
-             
-              
+             {
+               connectedString ? (
+              <ListItem className={clsx(classes.listItem, 'menu-item--no-dropdown')}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  component="a"
+                  target="blank"
+                  className={classes.listItemButton}
+                  onClick={()=>logout()}
+                >
+                  Logout
+                </Button>
+              </ListItem>
+               )
+               : (<></>)
+             }
+               
         </List>
       </Hidden>
       <Hidden mdUp>
