@@ -161,7 +161,7 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         </ListItemIcon>
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"#FAQs"}>
+        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"/#FAQs"}>
           What is Stacks
         </Typography>
         {/* <LandingPages /> */}
@@ -170,7 +170,7 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         <Divider className={classes.divider} />
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"#About"}>
+        <Typography variant="h6" color="textPrimary" onClick={() => onClose()} gutterBottom component={'a'} href={"/#About"}>
           About
         </Typography>
         {/* <SupportedPages /> */}

@@ -281,7 +281,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                 <Typography
                   variant="body1"
                   component={'a'}
-                  href={"#FAQs"}
+                  href={"/#FAQs"}
                   color="textPrimary"
                   className={clsx(classes.listItemText, 'menu-item')}
                 >
@@ -299,7 +299,7 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                 <Typography
                   variant="body1"
                   component={'a'}
-                  href={"#About"}
+                  href={"/#About"}
                   color="textPrimary"
                   className={clsx(classes.listItemText, 'menu-item')}
                 >

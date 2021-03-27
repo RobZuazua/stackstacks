@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import jwt_decode from "jwt-decode";
 import {
@@ -10,6 +10,8 @@ import {
   Divider,
 } from '@material-ui/core';
 import { UserContext } from 'App';
+import { useConnect } from '@stacks/connect-react';
+import { NETWORK } from 'stacks/Constants';
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -28,6 +30,23 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
 
   const connectedString = useContext(UserContext);
   let decodedObj:any = jwt_decode(connectedString);
+  const { doSTXTransfer } = useConnect();
+
+  const [token, setToken] = useState("STX");
+  const [amount, setAmount] = useState("0");
+  const [recipient, setRecipient] = useState("");
+  const [note, setNote] = useState("");
+
+
+  const handleChange = (e) => {
+    if (e.target.id === 'amount') {
+      setAmount(e.target.value);
+    } else if (e.target.id === 'recipient') {
+      setRecipient(e.target.value);
+    } else if (e.target.id === 'note') {
+      setNote(e.target.value);
+    }
+  }
 
   return (
     <div className={className} {...rest}>
@@ -54,6 +73,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             size="medium"
             fullWidth
             type="text"
+            disabled={true}
           />
           Currently only supporting STX transactions
         </Grid>
@@ -63,16 +83,18 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Amount
+            Amount (uSTX)
           </Typography>
           <TextField
-            placeholder="0.00"
+            id="amount"
+            placeholder="0"
             variant="outlined"
             size="medium"
             fullWidth
             type="number"
+            onChange={handleChange}
           />
-          There will be a {"< 1"} STX fee added to the amount you specify
+          1000000 uSTX = 1 STX
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -83,11 +105,13 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             Recipient
           </Typography>
           <TextField
+            id="recipient"
             placeholder="SP..."
             variant="outlined"
             size="medium"
             fullWidth
             type="text"
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>
@@ -99,6 +123,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             Note (optional)
           </Typography>
           <TextField
+            id="note"
             placeholder="Bitcoin rocks!!"
             variant="outlined"
             size="medium"
@@ -112,6 +137,17 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             type="submit"
             color="primary"
             size="large"
+            onClick={e=>doSTXTransfer({
+              recipient, 
+              amount,
+              network: NETWORK,
+              onFinish: data => {
+                console.log(data);
+
+                // setTxId(data.txId);
+                // spinner.current.classList.add('d-none');
+              }
+              })}
           >
             Preview Transaction
           </Button>
