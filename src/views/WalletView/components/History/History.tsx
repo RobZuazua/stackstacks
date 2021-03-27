@@ -49,8 +49,11 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
         <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h4" color="textPrimary">
-              Transaction History
+              Completed Transactions
             </Typography>
+            <Button variant="outlined" color="primary" target="_blank" href={`https://explorer.stacks.co/address/${stxAddress}?chain=mainnet`}>
+              See Pending Transactions
+            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
