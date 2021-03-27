@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'hidden',
     // background: theme.palette.primary.dark,
     // background: 'rgb(63,80,181)',
-    backgroundImage: 'linear-gradient(rgb(63,80,181) , rgb(223,247,254))',
+    background: 'linear-gradient(241.76deg, #3F50B5 -0.2%, #DFF7FE 121.1%)',
   },
   textWhite: {
     color: 'white',
