@@ -4,11 +4,10 @@ import {
   useMediaQuery,
   Grid,
   Typography,
-  FormControlLabel,
-  Checkbox,
-  Button,
   Divider,
 } from '@material-ui/core';
+import Jobs from '../Jobs';
+import { jobs } from 'views/WalletView/data';
 
 const useStyles = makeStyles(() => ({
   titleCta: {
@@ -32,79 +31,14 @@ const Assets = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h4" color="textPrimary">
-              Tokens
+              Assets
             </Typography>
           </div>
         </Grid>
         <Grid item xs={12}>
           <Divider />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h6" gutterBottom>
-            System settings
-          </Typography>
-          <Typography variant="caption" gutterBottom>
-            You will recieve emails in your business email address
-          </Typography>
-          <div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={true} color="primary" />}
-                label="E-mail alerts"
-              />
-            </div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={true} color="primary" />}
-                label="Push notifications"
-              />
-            </div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={true} color="primary" />}
-                label="Text messages"
-              />
-            </div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={false} color="primary" />}
-                label="Phone calles"
-              />
-            </div>
-          </div>
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Typography variant="h6" gutterBottom>
-            Chat settings
-          </Typography>
-          <Typography variant="caption" gutterBottom>
-            You will recieve emails in your business email address
-          </Typography>
-          <div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={false} color="primary" />}
-                label="E-mail alerts"
-              />
-            </div>
-            <div>
-              <FormControlLabel
-                control={<Checkbox defaultChecked={true} color="primary" />}
-                label="Push notifications"
-              />
-            </div>
-          </div>
-        </Grid>
-        <Grid item container justify="flex-start" xs={12}>
-          <Button
-            variant="contained"
-            type="submit"
-            color="primary"
-            size="large"
-          >
-            save
-          </Button>
-        </Grid>
+          <Jobs data={jobs} />
       </Grid>
     </div>
   );
