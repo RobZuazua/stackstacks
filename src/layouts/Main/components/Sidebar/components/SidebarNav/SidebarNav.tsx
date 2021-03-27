@@ -1,10 +1,12 @@
 /* eslint-disable react/no-multi-comp */
 /* eslint-disable react/display-name */
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { List, ListItem, Typography, ListItemIcon, Divider, Button } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
+import { useConnect } from '@stacks/connect-react';
+import { UserContext } from 'App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -57,6 +59,11 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
   const landings = pages.landings;
   const supportedPages = pages.pages;
   const account = pages.account;
+  const { doOpenAuth } = useConnect();
+
+  const connectedString = useContext(UserContext);
+
+  
 
   const MenuGroup = ({ item }: MenuGroupProps): JSX.Element => (
     <List disablePadding>
@@ -185,16 +192,34 @@ const SidebarNav = ({ pages, onClose, className, ...rest }: Props): JSX.Element 
         </Button>
       </ListItem> */}
       <ListItem className={classes.listItem}>
-        <Button
+        {
+          connectedString ? (
+          <Button
           variant="contained"
           color="primary"
           fullWidth
           component="a"
           target="blank"
           href="https://material-ui.com/store/items/the-front-landing-page/"
+         >
+          Your Wallet is Connected
+        </Button>
+          )
+          : (
+          <Button
+          variant="contained"
+          color="primary"
+          fullWidth
+          component="a"
+          target="blank"
+          href="https://material-ui.com/store/items/the-front-landing-page/"
+          onClick={()=>doOpenAuth()}
         >
           Connect Wallet
         </Button>
+          )
+        }
+        
       </ListItem>
     </List>
   );

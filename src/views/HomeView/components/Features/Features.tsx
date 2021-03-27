@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
   colors,
@@ -13,6 +13,8 @@ import {
 } from '@material-ui/core';
 import { SectionHeader } from 'components/molecules';
 import { CardBase, DescriptionListIcon } from 'components/organisms';
+import { UserContext } from 'App';
+import { useConnect } from '@stacks/connect-react';
 
 const useStyles = makeStyles(theme => ({
   checkBox: {
@@ -61,11 +63,14 @@ const useStyles = makeStyles(theme => ({
 
 const Features = ({ data, className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
+  const { doOpenAuth } = useConnect();
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
+
+  const connectedString = useContext(UserContext);
 
   const { items, properties } = data;
 
@@ -150,15 +155,34 @@ const Features = ({ data, className, ...rest }: ViewComponentProps): JSX.Element
                 </Grid>
               ))}
             </Grid>
-            <Button
-              size="large"
-              variant="contained"
-              color="primary"
-              className={classes.cta}
-              data-aos="fade-up"
-            >
-              Connect Wallet
-            </Button>
+
+            {
+              connectedString ?
+              (
+                <Button
+                  size="large"
+                  variant="contained"
+                  color="primary"
+                  className={classes.cta}
+                  data-aos="fade-up"
+                >
+                  Your Wallet is Connected
+                </Button>
+              )
+              : (
+              <Button
+                size="large"
+                variant="contained"
+                color="primary"
+                className={classes.cta}
+                data-aos="fade-up"
+                onClick={()=>doOpenAuth()}
+              >
+                Connect Wallet
+              </Button>
+              )
+
+            }
           </Grid>
         </Grid>
       </Grid>

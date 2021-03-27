@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -15,6 +15,8 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Image, DarkModeToggler } from 'components/atoms';
+import { UserContext } from 'App';
+import { useConnect } from '@stacks/connect-react';
 
 const useStyles = makeStyles(theme => ({
   flexGrow: {
@@ -136,6 +138,10 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
     setAnchorEl(null);
     setOpenedPopoverId(null);
   };
+
+  const { doOpenAuth } = useConnect();
+
+  const connectedString = useContext(UserContext);
 
   const landings = pages.landings;
   const supportedPages = pages.pages;
@@ -374,16 +380,33 @@ const Topbar = ({ themeMode, themeToggler, onSidebarOpen, pages, className, ...r
                   openedPopoverId === "1" ? classes.listItemActive : '',
                 )}
               >
-                <Typography
+                {
+                  connectedString ?
+                  <Typography
                   variant="body1"
                   // component={'a'}
                   // href={"#About"}
+                  color="textPrimary"
+                  className={clsx(classes.listItemText, 'menu-item')}
+                  style={{color:"green"}}
+                >
+                  CONNECTED •
+                </Typography> 
+                  : (
+                    <Typography
+                  variant="body1"
+                  // component={'a'}
+                  // href={"#About"}
+                  onClick={()=>doOpenAuth()}
                   color="textPrimary"
                   className={clsx(classes.listItemText, 'menu-item')}
                   style={{color:"red"}}
                 >
                   DISCONNECTED •
                 </Typography>
+                  )
+                }
+                
               </ListItem>
              
               

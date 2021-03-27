@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Button } from '@material-ui/core';
@@ -6,6 +6,7 @@ import { Image } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { Section } from 'components/organisms';
 import { useConnect } from '@stacks/connect-react';
+import { UserContext } from 'App';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,6 +72,7 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
 
   const { doOpenAuth } = useConnect();
+  const connectedString = useContext(UserContext);
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -94,7 +96,15 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
                   Start trading, stacking, or exploring Stacks with neptune
                 </span>
               }
-              ctaGroup={[
+              ctaGroup={
+                connectedString ?
+                [
+                  <Button variant="contained" size="large">
+                    Your Wallet is Connected
+                  </Button>,
+                ]
+                : 
+                [
                 <Button variant="contained" size="large" onClick={()=>doOpenAuth()}>
                   Connect Wallet
                 </Button>,
@@ -116,3 +126,4 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
 };
 
 export default Hero;
+
