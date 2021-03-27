@@ -40,11 +40,8 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
         <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h6" color="textPrimary">
-              Change Password
+              Stack STX
             </Typography>
-            <Button variant="outlined" color="primary">
-              Log out
-            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -56,10 +53,28 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Current password
+            Pool
           </Typography>
           <TextField
-            placeholder="Old password"
+            placeholder="Triton Pool"
+            variant="outlined"
+            size="medium"
+            name="fullname"
+            fullWidth
+            type="password"
+          />
+          We currently only support the Triton stacking pool
+        </Grid>
+        <Grid item xs={12}>
+          <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            className={classes.inputTitle}
+          >
+            Stacking Amount
+          </Typography>
+          <TextField
+            placeholder="0.00 STX"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -73,16 +88,17 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            New password
+            Stacking Cycles
           </Typography>
           <TextField
-            placeholder="New password"
+            placeholder="1"
             variant="outlined"
             size="medium"
             name="fullname"
             fullWidth
             type="password"
           />
+          Minimum 1. Your STX will be locked for the duration of the cycles specified
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -90,53 +106,19 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="textPrimary"
             className={classes.inputTitle}
           >
-            Repeat password
+            BTC Reward Address
           </Typography>
           <TextField
-            placeholder="Repeat password"
+            placeholder="0x..."
             variant="outlined"
             size="medium"
             name="fullname"
             fullWidth
             type="password"
           />
+          You MUST provide a valid Bitcoin address in order to recieve your stacking reward
         </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Switch color="primary" defaultChecked />}
-            label={
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.switchTitle}
-              >
-                Public Profile
-              </Typography>
-            }
-            labelPlacement="end"
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Divider />
-        </Grid>
-        <Grid item xs={12}>
-          <FormControlLabel
-            control={<Switch color="primary" />}
-            label={
-              <Typography
-                variant="subtitle1"
-                color="textPrimary"
-                className={classes.switchTitle}
-              >
-                Expose your email
-              </Typography>
-            }
-            labelPlacement="end"
-          />
-        </Grid>
+        
         <Grid item container justify="flex-start" xs={12}>
           <Button
             variant="contained"
@@ -144,7 +126,7 @@ const Security = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             color="primary"
             size="large"
           >
-            save
+            STACK
           </Button>
         </Grid>
       </Grid>

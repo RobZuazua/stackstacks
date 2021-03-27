@@ -26,8 +26,8 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
     <div className={clsx(classes.root, className)} {...rest}>
       <Section>
         <SectionHeader
-          title="Account Settings"
-          subtitle="Change account information and settings"
+          title="Welcome"
+          subtitle="ST20CXAA8S6SQQHFF4RKAWA4M14VMNT55QQ3LYGZ5"
           align="left"
           disableGutter
           titleProps={{
