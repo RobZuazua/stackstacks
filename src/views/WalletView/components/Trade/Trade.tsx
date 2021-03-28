@@ -9,7 +9,7 @@ import {
   Button,
   Divider,
 } from '@material-ui/core';
-import { UserContext } from 'App';
+import { browserHistory, UserContext } from 'App';
 import { useConnect } from '@stacks/connect-react';
 import { NETWORK } from 'stacks/Constants';
 
@@ -36,7 +36,6 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
   const [amount, setAmount] = useState("0");
   const [recipient, setRecipient] = useState("");
   const [note, setNote] = useState("");
-
 
   const handleChange = (e) => {
     if (e.target.id === 'amount') {
@@ -145,9 +144,8 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
               network: NETWORK,
               onFinish: data => {
                 console.log(data);
-
-                // setTxId(data.txId);
-                // spinner.current.classList.add('d-none');
+                console.log(data.txId);
+                browserHistory.push("/wallet/?pid=history");
               }
               })}
           >

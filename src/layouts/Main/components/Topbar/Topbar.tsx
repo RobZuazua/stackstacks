@@ -15,7 +15,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MenuIcon from '@material-ui/icons/Menu';
 import { Image, DarkModeToggler } from 'components/atoms';
-import { UserContext } from 'App';
+import { LogOutContext, UserContext } from 'App';
 import { useConnect } from '@stacks/connect-react';
 
 const useStyles = makeStyles(theme => ({

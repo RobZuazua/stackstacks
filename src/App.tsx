@@ -3,7 +3,7 @@
  * 
  * You may delete this file and its occurrences from the project filesystem if you are using GatsbyJS or NextJS version
  */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 import Routes from './Routes';
@@ -16,14 +16,13 @@ import 'assets/css/index.css';
 import 'swiper/css/swiper.min.css';
 import 'aos/dist/aos.css';
 
-const browserHistory = createBrowserHistory();
-
+export const browserHistory = createBrowserHistory();
 const appConfig = new AppConfig(['store_write', 'publish_data']);
-const userSession = new UserSession({ appConfig });
 export const UserContext = React.createContext('');
-
+export const LogOutContext = React.createContext('');
 
 const App = (): JSX.Element => {
+  const [userSession, setUserSession] = useState(new UserSession({ appConfig }));
 
   const authOptions = {
     appDetails: {
@@ -33,17 +32,18 @@ const App = (): JSX.Element => {
     redirectTo: '/',
     onFinish: () => {
       let userData = userSession.loadUserData();
-      console.log(userData);
       setUserState(userData.authResponseToken);
       localStorage.setItem('id', userData.authResponseToken);
+      browserHistory.push('/wallet')
+
       // window.location.href = '/wallet'
-  
+
     },
     userSession: userSession,
   }
 
   const [userState, setUserState] = useState(
-    localStorage.getItem('id') || ''
+    localStorage.getItem('id') || ""
   ); 
 
   return (
