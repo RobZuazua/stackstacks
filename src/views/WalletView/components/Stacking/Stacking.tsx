@@ -81,7 +81,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             <Typography variant="h4" color="textPrimary">
               Stack STX
             </Typography>
-            <Button variant="outlined" color="primary" target="_blank" href={`https://stacking.club/cycles/current`}>
+            <Button variant="outlined" color="secondary" target="_blank" href={`https://stacking.club/learn`}>
               Learn more about stacking
             </Button>
           </div>
@@ -105,8 +105,9 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             fullWidth
             type="text"
             disabled={true}
+            helperText={"We currently only support the Triton stacking pool"}
           />
-          We currently only support the Triton stacking pool
+          
         </Grid>
         <Grid item xs={12}>
           <Typography
@@ -127,7 +128,8 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             error={amount < 1}
             helperText={"Must Stack at least 1 STX."}
           />
-After stacking, you will still own these tokens. Stacking with the Triton pool simply gives us the ability to "lock" some of your tokens in your own wallet in order to secure the network and earn yield        </Grid>
+          
+    </Grid>
         <Grid item xs={12}>
           <Typography
             variant="subtitle1"
@@ -143,8 +145,8 @@ After stacking, you will still own these tokens. Stacking with the Triton pool s
             fullWidth
             type="number"
             disabled={true}
+            helperText={"We only support Stacking for 1 cycle"}
           />
-         We only support Stacking for 1 cycle
         </Grid>
         {/* <Grid item xs={12}>
           <Typography
@@ -163,29 +165,31 @@ After stacking, you will still own these tokens. Stacking with the Triton pool s
           />
           You MUST provide a valid Bitcoin address in order to recieve your stacking reward
         </Grid> */}
+        {/* <Grid item xs={12}>
+        <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            className={classes.inputTitle}
+          >
+            When you stack with neptune your STX tokens NEVER leave your account. Stacking requires that we lock some of your tokens, in your own wallet, in order to earn yield.  
+          </Typography>
+        </Grid> */}
         <Grid item xs={12}>
         <Typography
             variant="subtitle1"
             color="textPrimary"
             className={classes.inputTitle}
           >
-            The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in Stacks Tokens to the address you delegate from within 2 days of the cycle ending. Just 3% of your stacking rewards will be used as a fee.
+              The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from within 2 days of the cycle ending. 3% of your stacking reward will be used as a fee.
           </Typography>
         </Grid>
-
         <Grid item xs={12}>
         <Typography
             variant="subtitle1"
-            color="error"
+            color="secondary"
             className={classes.inputTitle}
           >
-            We are taking proactive measures to ensure you have a great experience using the Triton pool.
-
-            <br/><br/>
-              We <b>WILL NOT</b> lock your Stacks Tokens until we have enough funds to win a slot. If, for whatever
-              reason, we do not expect to be able to win a slot this upcoming cycle, we will let you know more than 24 hours
-               before the cycle begins. We will personally help you find and use another stacking pool.
-            
+              We will NOT lock your STX until the Triton pool has reached the required amount necessary to begin receiving rewards from the Stacks blockchain. If we do not expect to reach the threshold for the upcoming cycle, we will let you know more than 24 hours before the cycle begins via our <a target="_blank" href="https://discord.gg/FQtHwdQNyR">discord</a>.
           </Typography>
         </Grid>
 

@@ -62,7 +62,7 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
         </Grid>
         <Grid item xs={12}>
           {transactions.map((item: any, index: number) => (
-            <Grid item xs={12} key={index}>
+            <Grid item xs={12} key={index} spacing={2}>
               <a target="_blank" href={`https://explorer.stacks.co/txid/${item.tx_id}?chain=mainnet`}>
               <CardJobMinimal
                 title={
