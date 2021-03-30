@@ -87,6 +87,7 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
                 // showArrow
                 titleProps={{
                   variant: 'h6',
+                  color: item.tx_status === "success" ? "text-primary" : "error"
                 }}
                 subtitleProps={{
                   variant: 'subtitle1',
