@@ -43,6 +43,7 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
   let decodedObj:any = connectedString ? jwt_decode(connectedString) : "";
   const stxAddress = decodedObj ? decodedObj.profile.stxAddress.mainnet : "";
 
+  console.log(transactions);
   return (
     <div className={className} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
@@ -64,8 +65,25 @@ const Stacking = ({ className, account, transactions, ...rest }: ViewComponentPr
             <Grid item xs={12} key={index}>
               <a target="_blank" href={`https://explorer.stacks.co/txid/${item.tx_id}?chain=mainnet`}>
               <CardJobMinimal
-                title={item.sender_address === stxAddress ? "Sent" : item.token_transfer.recipient_address === stxAddress ? "Received" : "Other"}
-                subtitle={(parseInt(item.token_transfer.amount)/1000000).toString() + " STX"}
+                title={
+                  item.tx_type === "token_transfer" 
+                    ? item.sender_address === stxAddress 
+                      ? "Sent" 
+                      : "Received" 
+                    : item.tx_type === "contract_call" 
+                      ? item.contract_call.function_name === "delegate-stx" 
+                        ? "Delegate STX" 
+                        : item.contract_call.function_name === "revoke-delegate-stx" 
+                          ? "Revoke Delegation"
+                          : "Contract call"
+                      : "Contract call"}
+                subtitle={
+                  item.tx_type === "token_transfer" 
+                    ? item.sender_address === stxAddress 
+                      ? (parseInt(item.token_transfer.amount)/1000000).toString() + " STX" 
+                      : (parseInt(item.token_transfer.amount)/1000000).toString() + " STX" 
+                    : ""
+                  }
                 // showArrow
                 titleProps={{
                   variant: 'h6',

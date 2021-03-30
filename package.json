@@ -36,6 +36,7 @@
     "@stacks/blockchain-api-client": "^0.55.2",
     "@stacks/connect-react": "^5.0.5",
     "aos": "^2.3.4",
+    "bignumber.js": "^9.0.1",
     "clsx": "^1.0.4",
     "history": "^4.9.0",
     "jarallax": "^1.12.1",

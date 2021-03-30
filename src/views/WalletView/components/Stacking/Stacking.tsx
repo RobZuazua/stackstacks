@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import {
   useMediaQuery,
@@ -10,6 +10,20 @@ import {
   Button,
   Divider,
 } from '@material-ui/core';
+import { useConnect } from '@stacks/connect-react';
+import { NETWORK } from 'stacks/Constants';
+import {
+  callReadOnlyFunction,
+  uintCV,
+  tupleCV,
+  OptionalCV,
+  someCV,
+  noneCV,
+  cvToString,
+  standardPrincipalCV,
+} from "@stacks/transactions";
+import { calculateUntilBurnHeightBlockFromCycles, fetchPoxInfo } from 'stacks/Utils';
+import { browserHistory } from 'App';
 
 const useStyles = makeStyles(theme => ({
   inputTitle: {
@@ -28,11 +42,36 @@ const useStyles = makeStyles(theme => ({
 
 const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Element => {
   const classes = useStyles();
+  const { doContractCall } = useConnect();
 
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up('md'), {
     defaultMatches: true,
   });
+
+  const [poolAddress, setPoolAddress] = useState("SPGXKM11TG8GX814V460KDP9ZS5G0SYBWMZJG5AS");
+  const [amount, setAmount] = useState(0);
+  const [cycles, setCycles] = useState(1);
+
+  const handleChange = (e) => {
+    if (e.target.id === 'amount') {
+      setAmount(e.target.value);
+    } 
+  }
+
+  const cyclesToUntilBurnBlockHeight = useCallback(
+    async () => {
+      const poxInfo = await fetchPoxInfo();
+      if (!poxInfo) throw new Error('`poxInfo` not defined');
+      if (!cycles) return;
+      return calculateUntilBurnHeightBlockFromCycles({
+        cycles,
+        rewardCycleLength: poxInfo.reward_cycle_length,
+        currentCycleId: poxInfo.reward_cycle_id,
+        genesisBurnBlockHeight: poxInfo.first_burnchain_block_height,
+      });
+    },[cycles]
+  );
 
   return (
     <div className={className} {...rest}>
@@ -42,6 +81,9 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             <Typography variant="h4" color="textPrimary">
               Stack STX
             </Typography>
+            <Button variant="outlined" color="primary" target="_blank" href={`https://stacking.club/cycles/current`}>
+              Learn more about stacking
+            </Button>
           </div>
         </Grid>
         <Grid item xs={12}>
@@ -56,7 +98,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             Pool's address
           </Typography>
           <TextField
-            placeholder="SP25V7B7NQNS3ZWRG6WX4966S65E1K0731Z0JMBNK"
+            placeholder="SPGXKM11TG8GX814V460KDP9ZS5G0SYBWMZJG5AS"
             variant="outlined"
             size="medium"
             name="fullname"
@@ -75,14 +117,17 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             Stacking Amount
           </Typography>
           <TextField
-            placeholder="0.00 STX"
+            id="amount"
+            placeholder="0 STX"
             variant="outlined"
             size="medium"
             fullWidth
             type="number"
+            onChange={handleChange}
+            error={amount < 1}
+            helperText={"Must Stack at least 1 STX."}
           />
-          Must Stack at least 10 STX
-        </Grid>
+After stacking, you will still own these tokens. Stacking with the Triton pool simply gives us the ability to "lock" some of your tokens in your own wallet in order to secure the network and earn yield        </Grid>
         <Grid item xs={12}>
           <Typography
             variant="subtitle1"
@@ -97,10 +142,11 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             size="medium"
             fullWidth
             type="number"
+            disabled={true}
           />
-          Minimum 1. Your STX will be locked for the duration of the cycles specified
+         We only support Stacking for 1 cycle
         </Grid>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
@@ -116,17 +162,61 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             type="text"
           />
           You MUST provide a valid Bitcoin address in order to recieve your stacking reward
+        </Grid> */}
+        <Grid item xs={12}>
+        <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            className={classes.inputTitle}
+          >
+            The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in Stacks Tokens to the address you delegate from within 2 days of the cycle ending. Just 3% of your stacking rewards will be used as a fee.
+          </Typography>
         </Grid>
-        
+
+        <Grid item xs={12}>
+        <Typography
+            variant="subtitle1"
+            color="error"
+            className={classes.inputTitle}
+          >
+            We are taking proactive measures to ensure you have a great experience using the Triton pool.
+
+            <br/><br/>
+              We <b>WILL NOT</b> lock your Stacks Tokens until we have enough funds to win a slot. If, for whatever
+              reason, we do not expect to be able to win a slot this upcoming cycle, we will let you know more than 24 hours
+               before the cycle begins. We will personally help you find and use another stacking pool.
+            
+          </Typography>
+        </Grid>
+
         <Grid item container justify="flex-start" xs={12}>
-          <Button
+        <Button
+            disabled={amount < 1}
             variant="contained"
             type="submit"
             color="primary"
             size="large"
-            disabled={true}
+            onClick={async e=>doContractCall({
+              contractAddress: "SP000000000000000000002Q6VF78",
+              contractName: "pox",
+              functionName: "delegate-stx",
+              functionArgs: [
+                uintCV((amount* 1000000).toString()),
+                standardPrincipalCV(poolAddress),
+                // noneCV(),
+                someCV(uintCV(await cyclesToUntilBurnBlockHeight())),
+                noneCV(),
+              ],
+              network: NETWORK,
+              onFinish: data => {
+                // console.log(data);
+                browserHistory.push("/wallet/?pid=history");
+                // console.log(data.txId);
+                // browserHistory.push("/wallet/?pid=history");
+              }
+              })}
           >
-            PREVIEW STACK (COMING SOON)
+            PREVIEW STACK
           </Button>
         </Grid>
       </Grid>
