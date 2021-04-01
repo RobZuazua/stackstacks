@@ -51,7 +51,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             type="submit"
             color="primary"
             size="large"
-            onClick={()=>{setHasClaimed(true); setRewardAmount(10)}}
+            onClick={()=>{setHasClaimed(true); setRewardAmount(0)}}
           >
             Click to Claim
           </Button>
