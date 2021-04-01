@@ -4,7 +4,7 @@ import { parse } from 'query-string';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, List, ListItem, Grid, Typography } from '@material-ui/core';
 import { SectionAlternate, CardBase } from 'components/organisms';
-import { Hero, Trade, Stacking, Assets, History } from './components';
+import { Hero, Trade, Stacking, Assets, History, Claim } from './components';
 import { UserContext } from 'App';
 import { fetchAccount, fetchAccountTransactions } from 'stacks/Utils';
 import jwt_decode from "jwt-decode";
@@ -82,6 +82,11 @@ const subPages = [
     id: 'history',
     href: '/wallet/?pid=history',
     title: 'Transaction History',
+  },
+  {
+    id: 'claim',
+    href: '/wallet/?pid=claim',
+    title: 'Claim Reward',
   },
 ];
 
@@ -168,6 +173,9 @@ const WalletView = (): JSX.Element => {
               </TabPanel>
               <TabPanel value={pageId} index={'history'}>
                 <History account={userAccountAPI} transactions = {transactionHistory}/>
+              </TabPanel>
+              <TabPanel value={pageId} index={'claim'}>
+                <Claim account={userAccountAPI} transactions = {transactionHistory}/>
               </TabPanel>
               </>
             </CardBase>
