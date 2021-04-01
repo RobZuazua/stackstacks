@@ -180,7 +180,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="textPrimary"
             className={classes.inputTitle}
           >
-              The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from within 2 days of the cycle ending. 3% of your stacking reward will be used as a fee.
+              The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from within 2 days of the cycle ending. 0% of your stacking reward will be used as a fee.
           </Typography>
         </Grid>
         <Grid item xs={12}>
