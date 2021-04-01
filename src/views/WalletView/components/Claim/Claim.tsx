@@ -52,6 +52,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             color="primary"
             size="large"
             onClick={()=>{setHasClaimed(true); setRewardAmount(0)}}
+            disabled={true}
           >
             Click to Claim
           </Button>
@@ -62,7 +63,8 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             color="textPrimary"
             className={classes.inputTitle}
           >
-            {hasClaimed ? rewardMessage : "Click to claim your stacking rewards"}
+            {/* {hasClaimed ? rewardMessage : "Click to claim your stacking rewards"} */}
+            The ability to claim rewards will be enabled after the Triton pool's first stacking cycle is complete.
           </Typography>
         </Grid>
       </Grid>
