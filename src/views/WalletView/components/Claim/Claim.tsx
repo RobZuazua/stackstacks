@@ -39,13 +39,14 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
       <Grid container spacing={isMd ? 4 : 2}>
         <Grid item xs={12}>
           <Typography variant="h4" color="textPrimary">
-            Claim Reward
+            {/* Claim Reward */}
+            Coming Soon!
           </Typography>
         </Grid>
         <Grid item xs={12}>
           <Divider />
         </Grid>
-        <Grid item container justify="flex-start" xs={12}>
+        {/* <Grid item container justify="flex-start" xs={12}>
           <Button
             variant="contained"
             type="submit"
@@ -56,7 +57,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
           >
             Click to Claim
           </Button>
-        </Grid>
+        </Grid> */}
         <Grid item xs={12} sm={6}>
           <Typography
             variant="subtitle1"
@@ -64,7 +65,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             className={classes.inputTitle}
           >
             {/* {hasClaimed ? rewardMessage : "Click to claim your stacking rewards"} */}
-            The ability to claim rewards will be enabled after the Triton pool's first stacking cycle is complete.
+            Big news coming soon! Stay tuned.
           </Typography>
         </Grid>
       </Grid>
