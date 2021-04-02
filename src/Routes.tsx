@@ -5,6 +5,7 @@
  */
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
+import PoolToolsView from 'views/PoolToolsView';
 import WithLayout from 'WithLayout';
 import { Main as MainLayout, Minimal as MinimalLayout} from './layouts';
 
@@ -92,6 +93,17 @@ const Routes = (): JSX.Element => {
           <WithLayout
             {...matchProps}
             component={WalletView}
+            layout={MainLayout}
+          />
+        )}
+      />
+       <Route
+        exact
+        path="/tritonspooltools"
+        render={matchProps => (
+          <WithLayout
+            {...matchProps}
+            component={PoolToolsView}
             layout={MainLayout}
           />
         )}
@@ -598,7 +610,7 @@ const Routes = (): JSX.Element => {
           <WithLayout
             {...matchProps}
             component={NotFoundCoverView}
-            layout={MinimalLayout}
+            layout={MainLayout}
           />
         )}
       /> 

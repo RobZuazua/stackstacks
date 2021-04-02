@@ -18,6 +18,22 @@ import { BigNumber } from 'bignumber.js';
 
 /**
  * Uses the AccountsApi of the stacks blockchain api client library,
+ * returns the stacks balance object with property `balance` in decimal.
+ */
+ export function fetchAssets(addressAsString) {
+  console.log(`Checking account "${addressAsString}"`);
+  if (addressAsString) {
+    return accountsApi
+      .getAccountAssets({ principal: addressAsString })
+      .then(response => response);
+  } else {
+    return Promise.reject();
+  }
+}
+
+
+/**
+ * Uses the AccountsApi of the stacks blockchain api client library,
  * returns an array of transactions
  */
 export function fetchAccountTransactions(addressAsString) {

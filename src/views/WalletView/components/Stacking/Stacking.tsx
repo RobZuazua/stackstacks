@@ -105,7 +105,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             fullWidth
             type="text"
             disabled={true}
-            helperText={"We currently only support the Triton stacking pool"}
+            helperText={"We currently only support the Neptune stacking pool"}
           />
           
         </Grid>
@@ -180,7 +180,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="textPrimary"
             className={classes.inputTitle}
           >
-              The Triton stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from within 2 days of the cycle ending. 0% of your stacking reward will be used as a fee.
+              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. You can collect rewards as soon as we lock your tokens, or you can wait and you will automatically receive your rewards within 2 days of the cycle ending. There is no fee for either option.
           </Typography>
         </Grid>
         <Grid item xs={12}>
@@ -189,7 +189,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="secondary"
             className={classes.inputTitle}
           >
-              We will NOT lock your STX until the Triton pool has reached the required amount necessary to begin receiving rewards from the Stacks blockchain. If we do not expect to reach the threshold for the upcoming cycle, we will let you know more than 24 hours before the cycle begins via our <a target="_blank" href="https://discord.gg/FQtHwdQNyR">discord</a>.
+              We will NOT lock your STX until the Neptune pool has reached the required amount necessary to begin receiving rewards from the Stacks blockchain. If we do not expect to reach the threshold for the upcoming cycle, we will let you know more than 24 hours before the cycle begins via our <a target="_blank" href="https://discord.gg/FQtHwdQNyR">discord</a>.
           </Typography>
         </Grid>
 

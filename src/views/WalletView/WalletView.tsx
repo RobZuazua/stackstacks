@@ -86,8 +86,8 @@ const subPages = [
   {
     id: 'claim',
     href: '/wallet/?pid=claim',
-    // title: 'Claim Reward',
-    title: 'Coming Soon',
+    title: 'Claim Rewards',
+    // title: 'Coming Soon',
   },
 ];
 
