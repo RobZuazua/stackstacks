@@ -103,7 +103,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             {/* {hasClaimed ? rewardMessage : "Click to claim your stacking rewards"} */}
             As soon as the neptune stacking pool locks your tokens, you will have the option to claim your rewards instantly.
 
-If you do not want to claim your rewards instantly, we will send them to you withing two days of the cycle ending.
+If you do not want to claim your rewards instantly, we will send them to you within two days of the cycle ending.
           </Typography>
         </Grid>
         <Grid item xs={12} sm={6}>
