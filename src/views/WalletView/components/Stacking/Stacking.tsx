@@ -139,7 +139,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             Stacking Cycles
           </Typography>
           <TextField
-            placeholder="1"
+            placeholder="3"
             variant="outlined"
             size="medium"
             fullWidth
