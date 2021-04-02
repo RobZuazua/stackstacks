@@ -51,7 +51,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
 
   const [poolAddress, setPoolAddress] = useState("SPGXKM11TG8GX814V460KDP9ZS5G0SYBWMZJG5AS");
   const [amount, setAmount] = useState(0);
-  const [cycles, setCycles] = useState(1);
+  const [cycles, setCycles] = useState(3);
 
   const handleChange = (e) => {
     if (e.target.id === 'amount') {
@@ -145,7 +145,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             fullWidth
             type="number"
             disabled={true}
-            helperText={"We only support Stacking for 1 cycle"}
+            helperText={"We only support Stacking for 3 cycles"}
           />
         </Grid>
         {/* <Grid item xs={12}>
