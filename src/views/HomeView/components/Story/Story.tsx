@@ -71,6 +71,21 @@ const Story = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
             align="left"
           />
         </Grid>
+        <Grid item xs={12} sm={6} data-aos={'fade-up'}>
+          <DescriptionListIcon
+            title="Learn More About Neptune"
+            subtitle="Check out our most frequently asked questions!"
+            icon={
+              <Icon
+                fontIconClass="fas fa-question"
+                size="medium"
+                fontIconColor={colors.yellow[700]}
+              />
+            }
+            align="left"
+          />
+          <a href="https://docs.google.com/document/d/1btirO0ObkInkKMpMxwRCp-W2Y1xbSYsupQ9HCOYPmFM/edit?usp=sharing">FAQs</a>
+        </Grid>
         {/* <Grid item container justify="center" xs={12} data-aos={'fade-up'}>
           <Button variant="outlined" color="primary">
             Learn more

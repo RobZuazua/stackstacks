@@ -115,7 +115,7 @@ const Hero = ({ className, ...rest }: ViewComponentProps): JSX.Element => {
           </div>
         </Section>
         <Image
-          src="https://crashcodeexamples.s3.us-east-2.amazonaws.com/Easy+find_dark.svg"
+          src="https://crashcodeexamples.s3.us-east-2.amazonaws.com/Group+2-min.png"
           className={classes.sofaImage}
           data-aos="fade-up"
           lazy={false}
