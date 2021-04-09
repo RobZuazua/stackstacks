@@ -83,12 +83,12 @@ const subPages = [
     href: '/wallet/?pid=history',
     title: 'Transaction History',
   },
-  {
-    id: 'claim',
-    href: '/wallet/?pid=claim',
-    title: 'Claim Rewards',
-    // title: 'Coming Soon',
-  },
+  // {
+  //   id: 'claim',
+  //   href: '/wallet/?pid=claim',
+  //   title: 'Claim Rewards',
+  //   // title: 'Coming Soon',
+  // },
 ];
 
 interface TabPanelProps {

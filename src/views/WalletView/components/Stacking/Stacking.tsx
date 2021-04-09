@@ -51,7 +51,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
 
   const [poolAddress, setPoolAddress] = useState("SPGXKM11TG8GX814V460KDP9ZS5G0SYBWMZJG5AS");
   const [amount, setAmount] = useState(0);
-  const [cycles, setCycles] = useState(3);
+  const [cycles, setCycles] = useState(9);
 
   const handleChange = (e) => {
     if (e.target.id === 'amount') {
@@ -139,13 +139,13 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             Stacking Cycles
           </Typography>
           <TextField
-            placeholder="3"
+            placeholder="9"
             variant="outlined"
             size="medium"
             fullWidth
             type="number"
             disabled={true}
-            helperText={"We only support Stacking for 3 cycles"}
+            helperText={"We only support Stacking for 9 cycles. (Until cycle #15 for the Stacks 2.1 fork)"}
           />
         </Grid>
         {/* <Grid item xs={12}>
@@ -180,19 +180,10 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="textPrimary"
             className={classes.inputTitle}
           >
-              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. You can collect rewards as soon as we lock your tokens, or you can wait and you will automatically receive your rewards within 2 days of the cycle ending. There is no fee for either option.
-          </Typography>
-        </Grid>
-        <Grid item xs={12}>
-        <Typography
-            variant="subtitle1"
-            color="secondary"
-            className={classes.inputTitle}
-          >
-              We will NOT lock your STX until the Neptune pool has reached the required amount necessary to begin receiving rewards from the Stacks blockchain. If we do not expect to reach the threshold for the upcoming cycle, we will let you know more than 24 hours before the cycle begins via our <a target="_blank" href="https://discord.gg/FQtHwdQNyR">discord</a>.
-          </Typography>
-        </Grid>
+              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. We will send the rewards to you as soon as we lock your tokens. There is no fee. Please read  <a target="_blank" href="https://docs.google.com/document/d/1btirO0ObkInkKMpMxwRCp-W2Y1xbSYsupQ9HCOYPmFM/edit?usp=sharing">FAQ</a> for more information.
 
+          </Typography>
+        </Grid>
         <Grid item container justify="flex-start" xs={12}>
         <Button
             disabled={amount < 1}

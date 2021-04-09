@@ -6,11 +6,20 @@ import { LearnMoreLink } from 'components/atoms';
 import { SectionHeader } from 'components/molecules';
 import { HeroShaped, Section } from 'components/organisms';
 import { useConnect } from '@stacks/connect-react';
+import { address } from 'bitcoinjs-lib';
 import { NETWORK } from 'stacks/Constants';
 import {
   uintCV,
   standardPrincipalCV,
+  tupleCV,
+  bufferCV,
+  noneCV,
+  stringUtf8CV,
+  bufferCVFromString,
+  AddressHashMode,
 } from "@stacks/transactions";
+import BN from 'bn.js';
+
 const useStyles = makeStyles(theme => {
   const toolbar = theme.mixins.toolbar as any;
   return ({
@@ -51,9 +60,40 @@ const useStyles = makeStyles(theme => {
 
 const PoolToolsView = (): JSX.Element => {
   const classes = useStyles();
+  const [delegateStackSTXAmount, setDelegateStackSTXAmount] = useState(0);
+  const [delegateStackSTXStacker, setDelegateStackSTXStacker] = useState("");
+  const [delegateStacksBTCAddress, setDelegateStacksSTXBTCAddress] = useState("1LMn4ycjBXbVC4tKgCfPESFVjFn8x1XiKM");
+  const [delegateStackSTXVersion, setDelegateStackSTXVersion] = useState(AddressHashMode.SerializeP2PKH);
+  const [delegateStackSTXStartBurnHeight, setDelegateStackSTXStartBurnHeight] = useState(0);
+  const [delegateStackSTXStartLockPeriod, setDelegateStackSTXStartLockPeriod] = useState(0);
+
+
+  // const { hashMode, data } = decodeBtcAddress(poxAddress);
+
+  //  {
+  //   hashMode,
+  //   data: b58Result.hash,
+  // };
+  //   const hashModeBuffer = bufferCV(new BN(hashMode, 10).toArrayLike(Buffer));
+  //   const hashbytes = bufferCV(data);
+  //   const address = tupleCV({
+  //     hashbytes,
+  //     version: hashModeBuffer,
+  //   });
+
+  let b58Result: address.Base58CheckResult;
+  try {
+    b58Result = address.fromBase58Check(delegateStacksBTCAddress);
+  } catch (error) {
+    // throw new InvalidAddressError(delegateStackSTXHashBytes, error);
+  }  
+
+  const hashModeBuffer = bufferCV(new BN(delegateStackSTXVersion, 10).toArrayLike(Buffer));
+  const hashbytes = bufferCV(b58Result.hash);
+
   const [amount, setAmount] = useState(0);
 
-  const [address, setAddress] = useState("");
+  const [mySTXAddress, setMySTXAddress] = useState("");
   const [rewards, setRewards] = useState(0);
 
   const { doContractCall } = useConnect();
@@ -65,15 +105,148 @@ const PoolToolsView = (): JSX.Element => {
   const handleChange = (e) => {
     if (e.target.id === 'amount') {
       setAmount(e.target.value);
-    } else if (e.target.id === 'address') {
-      setAddress(e.target.value);
+    } else if (e.target.id === 'mySTXAddress') {
+      setMySTXAddress(e.target.value);
     } else if (e.target.id === 'rewards') {
       setRewards(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXAmount') {
+      setDelegateStackSTXAmount(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXStacker') {
+      setDelegateStackSTXStacker(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXBTCAddress') {
+      setDelegateStacksSTXBTCAddress(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXVersion') {
+      setDelegateStackSTXVersion(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXStartBurnHeight') {
+      setDelegateStackSTXStartBurnHeight(e.target.value);
+    } else if (e.target.id === 'delegateStackSTXStartLockPeriod') {
+      setDelegateStackSTXStartLockPeriod(e.target.value);
     } 
   }
 
   return (
     <div className={classes.root}>
+      <Section>
+     <Grid item xs={12}>
+          <Typography
+            variant="subtitle1"
+            color="textPrimary"
+            className={classes.txt}
+          >
+            Delegate Stack STX for user
+          </Typography>
+          <TextField
+            id="delegateStackSTXAmount"
+            placeholder="1"
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="number"
+            onChange={handleChange}
+            helperText="amount"
+          />
+          <br/><br/>
+          <TextField
+            id="delegateStackSTXStacker"
+            placeholder=""
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="text"
+            onChange={handleChange}
+            helperText="stacker"
+          />
+          <br/><br/>
+          <TextField
+            id="delegateStackSTXBTCAddress"
+            defaultValue={delegateStacksBTCAddress}
+            disabled={true}
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="text"
+            onChange={handleChange}
+            helperText="BTC Address"
+          />
+          <br/><br/>
+          <TextField
+            id="delegateStackSTXVersion"
+            defaultValue={delegateStackSTXVersion}
+            disabled={true}
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="number"
+            onChange={handleChange}
+            helperText="version"
+          />
+          <br/><br/>
+          <TextField
+            id="delegateStackSTXStartBurnHeight"
+            placeholder="1"
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="number"
+            onChange={handleChange}
+            helperText="burn height"
+          />
+          <br/><br/>
+          <TextField
+            id="delegateStackSTXStartLockPeriod"
+            placeholder="1"
+            variant="outlined"
+            size="medium"
+            fullWidth
+            type="number"
+            onChange={handleChange}
+            helperText="lock period"
+
+          />
+          <br/><br/>
+          <Button
+          size="large"
+          variant="contained"
+          color="primary"
+          onClick={async e=>doContractCall({
+            contractAddress: "SP000000000000000000002Q6VF78",
+            contractName: "pox",
+            functionName: "delegate-stack-stx",
+            functionArgs: [
+              standardPrincipalCV(delegateStackSTXStacker),
+              uintCV((delegateStackSTXAmount).toString()),
+              // tupleCV({"hashbytes": delegateStackSTXHashBytes, "version" : delegateStackSTXVersion}),
+              //tupleCV({"hashbytes": bufferCVFromString(delegateStackSTXHashBytes), "version" : bufferCVFromString(delegateStackSTXVersion)}),
+              tupleCV({
+                hashbytes,
+                version: hashModeBuffer,
+              }),
+              // POX ADDRESS
+              uintCV((delegateStackSTXStartBurnHeight).toString()),
+              uintCV((delegateStackSTXStartLockPeriod).toString()),
+              // standardPrincipalCV(poolAddress),
+              // noneCV(),
+              //someCV(uintCV(await cyclesToUntilBurnBlockHeight())),
+              //noneCV(),
+            ],
+            network: NETWORK,
+            postConditionMode: 0x01,
+            onFinish: data => {
+              console.log(data)
+              // console.log(data);
+              //browserHistory.push("/wallet/?pid=history");
+              // console.log(data.txId);
+              // browserHistory.push("/wallet/?pid=history");
+            }
+            })}
+        >
+          delegate-stack-stx for user
+        </Button>
+        </Grid>
+     
+     </Section>
+
+
      <Section>
      <Grid item xs={12}>
           <Typography
@@ -134,7 +307,7 @@ const PoolToolsView = (): JSX.Element => {
             STX Address
           </Typography>
           <TextField
-            id="address"
+            id="mySTXAddress"
             placeholder=""
             variant="outlined"
             size="medium"
@@ -170,7 +343,7 @@ const PoolToolsView = (): JSX.Element => {
             contractName: "neptune-pool",
             functionName: "set-rewards",
             functionArgs: [
-              standardPrincipalCV(address),
+              standardPrincipalCV(mySTXAddress),
               uintCV((rewards* 1000000).toString()),
               // standardPrincipalCV(poolAddress),
               // noneCV(),
