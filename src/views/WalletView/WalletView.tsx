@@ -89,6 +89,11 @@ const subPages = [
   //   title: 'Claim Rewards',
   //   // title: 'Coming Soon',
   // },
+  {
+    id: 'payouts',
+    href: '/wallet/?pid=payouts',
+    title: 'Stacking Payouts',
+  },
 ];
 
 interface TabPanelProps {
@@ -175,7 +180,10 @@ const WalletView = (): JSX.Element => {
               <TabPanel value={pageId} index={'history'}>
                 <History account={userAccountAPI} transactions = {transactionHistory}/>
               </TabPanel>
-              <TabPanel value={pageId} index={'claim'}>
+              {/* <TabPanel value={pageId} index={'claim'}>
+                <Claim account={userAccountAPI} transactions = {transactionHistory}/>
+              </TabPanel> */}
+              <TabPanel value={pageId} index={'payouts'}>
                 <Claim account={userAccountAPI} transactions = {transactionHistory}/>
               </TabPanel>
               </>
