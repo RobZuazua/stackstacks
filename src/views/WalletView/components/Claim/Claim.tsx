@@ -66,7 +66,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             <br/><br/>
             You can see what happened <a href="https://explorer.stacks.co/address/SPGXKM11TG8GX814V460KDP9ZS5G0SYBWMZJG5AS?chain=mainnet">here</a>
             <br/><br/>
-            In the future this will all be trustless. I do not believe in you needing to trust me.
+            In the future this will all be trustless.
             <br/><br/>
             We will announce when this has been taken over by smart contracts and oracles!
           </Typography>
