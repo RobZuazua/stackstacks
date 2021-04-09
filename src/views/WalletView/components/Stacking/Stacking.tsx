@@ -180,7 +180,13 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="textPrimary"
             className={classes.inputTitle}
           >
-              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. We will send the rewards to you as soon as we lock your tokens. There is no fee. Please read  <a target="_blank" href="https://docs.google.com/document/d/1btirO0ObkInkKMpMxwRCp-W2Y1xbSYsupQ9HCOYPmFM/edit?usp=sharing">FAQ</a> for more information.
+              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. There is no fee.
+              <br/><br/>
+              After your tokens are locked, you will see a new tab "Claim Instant Rewards". 
+              <br/><br/> 
+              You will have the option to claim your rewards instantly by clicking this button. Or, you can wait until the end of the cycle and we will send you your rewards.
+              
+               Please read  <a target="_blank" href="https://docs.google.com/document/d/1btirO0ObkInkKMpMxwRCp-W2Y1xbSYsupQ9HCOYPmFM/edit?usp=sharing">FAQ</a> for more information.
 
           </Typography>
         </Grid>
