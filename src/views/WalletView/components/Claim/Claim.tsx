@@ -68,7 +68,7 @@ const Trade = ({ className, account, ...rest }: ViewComponentProps): JSX.Element
             <br/><br/>
             In the future this will all be trustless. I do not believe in you needing to trust me.
             <br/><br/>
-            We will announce when this has been taken over by smart contracts and oracles :)
+            We will announce when this has been taken over by smart contracts and oracles!
           </Typography>
         </Grid>
         <Grid item container justify="flex-start" xs={12}>
