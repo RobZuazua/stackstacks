@@ -76,7 +76,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
   return (
     <div className={className} {...rest}>
       <Grid container spacing={isMd ? 4 : 2}>
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <div className={classes.titleCta}>
             <Typography variant="h4" color="textPrimary">
               Stack STX
@@ -85,11 +85,11 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
               Learn more about stacking
             </Button>
           </div>
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+        {/* <Grid item xs={12}>
           <Divider />
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+        {/* <Grid item xs={12}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
@@ -108,8 +108,8 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             helperText={"We currently only support the Neptune stacking pool"}
           />
           
-        </Grid>
-        <Grid item xs={12}>
+        </Grid> */}
+        {/* <Grid item xs={12}>
           <Typography
             variant="subtitle1"
             color="textPrimary"
@@ -127,9 +127,9 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             onChange={handleChange}
             error={amount < 1}
             helperText={"Must Stack at least 1 STX."}
-          />
+          /> */}
           
-    </Grid>
+    {/* </Grid>
         <Grid item xs={12}>
           <Typography
             variant="subtitle1"
@@ -147,7 +147,7 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             disabled={true}
             helperText={"We only support Stacking for 9 cycles. (Until cycle #15 for the Stacks 2.1 fork)"}
           />
-        </Grid>
+        </Grid> */}
         {/* <Grid item xs={12}>
           <Typography
             variant="subtitle1"
@@ -180,19 +180,13 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
             color="textPrimary"
             className={classes.inputTitle}
           >
-              The Neptune stacking pool pays <a target="_blank" href="https://stacking.club/cycles/current">rewards</a> in STX to the address you delegate from. There is no fee.
-              <br/><br/>
-              After your tokens are locked, you will see a new tab "Claim Instant Rewards". 
-              <br/><br/> 
-              You will have the option to claim your rewards instantly by clicking this button. Or, you can wait until the end of the cycle and we will send you your rewards.
-              
-               Please read  <a target="_blank" href="https://docs.google.com/document/d/1btirO0ObkInkKMpMxwRCp-W2Y1xbSYsupQ9HCOYPmFM/edit?usp=sharing">FAQ</a> for more information.
+              Neptune pool did not meet the minimum number of required tokens for us to stack the pool. Use the above “revoke” button to revoke your delegation to neptune wallet. Connect with us on Discord if you have any questions or need help revoking.
 
           </Typography>
         </Grid>
         <Grid item container justify="flex-start" xs={12}>
-        <Button
-            disabled={amount < 1}
+        {/* <Button
+            disabled={true}
             variant="contained"
             type="submit"
             color="primary"
@@ -218,6 +212,35 @@ const Stacking = ({ className, account, ...rest }: ViewComponentProps): JSX.Elem
               })}
           >
             PREVIEW STACK
+          </Button>
+          <br/><br/> */}
+          <Button
+            disabled={false}
+            variant="contained"
+            type="submit"
+            color="primary"
+            size="large"
+            onClick={async e=>doContractCall({
+              contractAddress: "SP000000000000000000002Q6VF78",
+              contractName: "pox",
+              functionName: "revoke-delegate-stx",
+              functionArgs: [
+                // uintCV((amount* 1000000).toString()),
+                // standardPrincipalCV(poolAddress),
+                // // noneCV(),
+                // someCV(uintCV(await cyclesToUntilBurnBlockHeight())),
+                // noneCV(),
+              ],
+              network: NETWORK,
+              onFinish: data => {
+                // console.log(data);
+                browserHistory.push("/wallet/?pid=history");
+                // console.log(data.txId);
+                // browserHistory.push("/wallet/?pid=history");
+              }
+              })}
+          >
+            REVOKE DELEGATION
           </Button>
         </Grid>
       </Grid>
